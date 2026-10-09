@@ -56,8 +56,7 @@ header{
   position:fixed;
   top:28px;left:0;right:0;
   z-index:100;
-  background:rgba(5,4,3,.88);
-  backdrop-filter:blur(18px);
+  background:rgba(5,4,3,.96);
   border-bottom:1px solid var(--line);
 }
 nav{
@@ -146,8 +145,8 @@ h1 span{color:var(--gold2);text-shadow:0 0 30px rgba(244,191,55,.16)}
   width:320px;height:320px;
   left:50%;top:50%;
   transform:translate(-50%,-50%);
-  background:rgba(244,191,55,.12);
-  filter:blur(70px);
+  background:rgba(244,191,55,.08);
+  filter:blur(40px);
   z-index:-1;
 }
 .orbit-caption{
@@ -158,7 +157,7 @@ h1 span{color:var(--gold2);text-shadow:0 0 30px rgba(244,191,55,.16)}
 .orbit-caption small{display:block;color:#a89870;font-size:10px;margin-top:6px}
 .live{color:var(--gold2);font-size:10px;letter-spacing:1px;white-space:nowrap}
 
-.orbit-scene{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:25px}
+.orbit-scene{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:25px;transform:translateZ(0)}
 
 /* Canvas particles layer */
 #blockchainCanvas{
@@ -283,9 +282,9 @@ section{padding:85px 0}
   background:linear-gradient(145deg,rgba(24,18,8,.92),rgba(10,8,4,.96));
   border:1px solid var(--line);
   border-radius:18px;padding:24px;
-  box-shadow:var(--shadow);transition:.25s;
+  box-shadow:none;transition:border-color .2s;
 }
-.stat:hover,.card:hover{border-color:rgba(244,191,55,.45);transform:translateY(-3px)}
+.stat:hover,.card:hover{border-color:rgba(244,191,55,.45)}
 .stat b{display:block;font-family:Orbitron;font-size:25px;color:var(--gold2);margin-bottom:8px}
 .stat span{color:var(--muted);font-size:12px}
 
@@ -306,7 +305,7 @@ section{padding:85px 0}
   min-height:205px;padding:23px;
   border:1px solid var(--line);border-radius:20px;
   background:linear-gradient(145deg,rgba(22,16,6,.96),rgba(8,6,3,.98));
-  box-shadow:var(--shadow);position:relative;overflow:hidden;
+  box-shadow:none;position:relative;overflow:hidden;
 }
 .market-head{display:flex;justify-content:space-between;align-items:center;color:#9a8c70;font-size:10px;letter-spacing:1.2px}
 .up{color:#ffd54a}
@@ -397,17 +396,16 @@ section{padding:85px 0}
   background:linear-gradient(145deg,rgba(28,22,8,.96),rgba(12,10,4,.98));
   border:1px solid rgba(244,191,55,.28);
   border-radius:22px;
-  box-shadow:0 0 32px rgba(244,191,55,.10);
-  transition:transform .25s,border-color .25s,box-shadow .25s;
+  box-shadow:none;
+  transition:border-color .2s;
   cursor:pointer;
   color:inherit;font:inherit;text-decoration:none;
   min-height:240px;
   justify-content:center;
 }
 .contact-card:hover{
-  transform:translateY(-6px);
   border-color:rgba(244,191,55,.55);
-  box-shadow:0 10px 40px rgba(244,191,55,.22);
+  box-shadow:0 4px 24px rgba(244,191,55,.18);
 }
 .contact-icon{
   width:68px;height:68px;border-radius:50%;
@@ -452,16 +450,16 @@ section{padding:85px 0}
 footer{border-top:1px solid var(--line);padding:30px 0;color:#9a8c70;font-size:12px}
 .footer-flex{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .gold{color:var(--gold2)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
+.reveal{opacity:0;transition:opacity .45s ease}
+.reveal.visible{opacity:1}
 
 /* ANIMATIONS */
 @keyframes orbitSpin{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
 @keyframes counterSpin{from{transform:translateX(-50%) rotate(0)}to{transform:translateX(-50%) rotate(-360deg)}}
 @keyframes counterSpinSide{from{transform:translate(50%,-50%) rotate(0)}to{transform:translate(50%,-50%) rotate(-360deg)}}
 @keyframes corePulse{
-  0%,100%{box-shadow:0 0 28px rgba(255,200,50,.50),inset 0 0 22px rgba(0,0,0,.40);scale:1}
-  50%{box-shadow:0 0 48px rgba(255,213,74,.80),inset 0 0 22px rgba(0,0,0,.40);scale:1.04}
+  0%,100%{box-shadow:0 0 20px rgba(255,200,50,.4);scale:1}
+  50%{box-shadow:0 0 32px rgba(255,213,74,.55);scale:1.02}
 }
 @keyframes sparkle{
   0%,100%{opacity:.15;transform:scale(.6)}
@@ -556,10 +554,30 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#9a8c70;font-size:1
   overflow:hidden;
 }
 
+
+/* Performance e rolagem firme */
+html{scroll-behavior:smooth}
+body{overscroll-behavior-y:none;-webkit-font-smoothing:antialiased}
+.orbit,.satellite,.core{will-change:transform}
+#globalParticles,#blockchainCanvas{will-change:auto;contain:strict}
+.stat,.card,.market-card,.step,.dashboard-main,.wallet,.contact-card{
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+@media(max-width:900px){
+  #globalParticles{opacity:.45}
+}
+
+
+img{content-visibility:auto}
+section{content-visibility:auto;contain-intrinsic-size:auto 400px}
+.ticker{contain:layout paint}
+.orbit-one,.orbit-two,.orbit-three,.orbit-four{will-change:transform}
+.satellite{will-change:transform}
+
 </style>
 </head>
 <body>
-<canvas id="globalParticles" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
 <div class="topline"><div class="container"><span>● REDE CARBON CREDIT NEX ONLINE</span><span>BLOCKCHAIN • GREEN ASSETS • CARBON MARKET</span></div></div>
 <header>
   <div class="container">
@@ -606,10 +624,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#9a8c70;font-size:1
         <span class="orbit-label label-c">Energia limpa</span>
         <span class="orbit-label label-d">Web3</span>
         <span class="orbit-label label-e">Nodos</span>
-        <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i>
-        <i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i>
-        <i class="spark s7"></i><i class="spark s8"></i><i class="spark s9"></i>
-        <i class="spark s10"></i>
+        <i class="spark s1"></i><i class="spark s3"></i><i class="spark s5"></i>
 
         <div class="orbit orbit-four"><span class="satellite" aria-label="Nodo">⬡</span></div>
         <div class="orbit orbit-three"><span class="satellite gold" aria-label="Mercado global">🌎</span></div>
@@ -989,32 +1004,37 @@ function initBlockchainParticles(){
   resize();
   window.addEventListener("resize", resize);
 
-  const COUNT = 42;
+  const COUNT = 12;
   for(let i = 0; i < COUNT; i++){
     const isBright = Math.random() > 0.55;
     particles.push({
       x: Math.random() * w,
       y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.55,
-      vy: (Math.random() - 0.5) * 0.55,
-      r: Math.random() * 2.8 + 0.8,
-      baseAlpha: isBright ? 0.9 : 0.45,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      r: Math.random() * 2.2 + 0.7,
+      baseAlpha: isBright ? 0.85 : 0.4,
       pulse: Math.random() * Math.PI * 2,
-      pulseSpeed: 0.02 + Math.random() * 0.03,
+      pulseSpeed: 0.015 + Math.random() * 0.02,
       color: isBright ? [255, 213, 74] : [232, 176, 32]
     });
   }
 
+  let frame = 0;
   function draw(){
+    frame++;
+    if(document.hidden){ requestAnimationFrame(draw); return; }
+    // atualiza a cada 2 frames em mobile
+    const skip = window.innerWidth < 700 && (frame % 2 === 0);
+    if(skip){ requestAnimationFrame(draw); return; }
     ctx.clearRect(0, 0, w, h);
-    // conexões douradas
     for(let i = 0; i < particles.length; i++){
       for(let j = i + 1; j < particles.length; j++){
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < 120){
-          const alpha = 0.28 * (1 - dist/120);
+        if(dist < 70){
+          const alpha = 0.22 * (1 - dist/95);
           ctx.beginPath();
           ctx.strokeStyle = `rgba(255,200,50,${alpha})`;
           ctx.lineWidth = 0.8;
@@ -1038,78 +1058,14 @@ function initBlockchainParticles(){
       ctx.beginPath();
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${alpha})`;
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},0.7)`;
       ctx.fill();
-      ctx.shadowBlur = 0;
     });
     requestAnimationFrame(draw);
   }
   draw();
 }
 
-/* ========== PARTÍCULAS DOURADAS GLOBAIS (fundo da página) ========== */
-function initGlobalParticles(){
-  const canvas = document.getElementById("globalParticles");
-  if(!canvas) return;
-  const ctx = canvas.getContext("2d");
-  let w, h, particles = [];
-
-  function resize(){
-    w = canvas.width = window.innerWidth * (window.devicePixelRatio || 1);
-    h = canvas.height = window.innerHeight * (window.devicePixelRatio || 1);
-    canvas.style.width = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
-    ctx.setTransform(window.devicePixelRatio || 1, 0, 0, window.devicePixelRatio || 1, 0, 0);
-    w = window.innerWidth; h = window.innerHeight;
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  const COUNT = 55;
-  for(let i = 0; i < COUNT; i++){
-    particles.push({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: -0.15 - Math.random() * 0.35,
-      r: Math.random() * 1.8 + 0.4,
-      alpha: 0.15 + Math.random() * 0.35,
-      pulse: Math.random() * Math.PI * 2,
-      pulseSpeed: 0.015 + Math.random() * 0.025,
-      drift: (Math.random() - 0.5) * 0.08
-    });
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, w, h);
-    particles.forEach(p => {
-      p.x += p.vx + p.drift;
-      p.y += p.vy;
-      p.pulse += p.pulseSpeed;
-      if(p.y < -15){ p.y = h + 15; p.x = Math.random() * w; }
-      if(p.x < -15) p.x = w + 15;
-      if(p.x > w + 15) p.x = -15;
-      const a = p.alpha * (0.5 + 0.5 * Math.sin(p.pulse));
-      const r = p.r * (0.8 + 0.25 * Math.sin(p.pulse * 1.3));
-      // glow
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, r * 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,200,50,${a * 0.15})`;
-      ctx.fill();
-      // core
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,220,100,${a})`;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = "rgba(255,200,50,0.6)";
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
+function initGlobalParticles(){ /* desativado para performance */ }
 
 /* ========== MERCADO LIVE DEMO ========== */
 function animateMarket(){
@@ -1133,12 +1089,11 @@ function animateMarket(){
       el.style.color = "#ff8a8a";
     }
     $("volumeValue").textContent = (180000 + Math.floor(Math.random()*12000)).toLocaleString("pt-BR") + " tCO₂e";
-  }, 3200);
+  }, 8000);
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
   initBlockchainParticles();
-  initGlobalParticles();
   animateMarket();
 
   if(window.ethereum){
