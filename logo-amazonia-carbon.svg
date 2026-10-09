@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd968"/>
+      <stop offset="50%" stop-color="#f4bf37"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39ff88"/>
+      <stop offset="100%" stop-color="#16d66b"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="230" fill="none" stroke="url(#gold)" stroke-width="8" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="256" cy="256" r="210" fill="none" stroke="url(#green)" stroke-width="3" opacity="0.6"/>
+  
+  <!-- Tech hexagon -->
+  <path d="M256 80 L380 150 L380 290 L256 360 L132 290 L132 150 Z" 
+        fill="none" stroke="url(#gold)" stroke-width="6" opacity="0.85"/>
+  
+  <!-- Inner leaf -->
+  <g transform="translate(256,240)">
+    <!-- Leaf shape -->
+    <path d="M0 -95 
+             C 55 -70, 85 -20, 70 40
+             C 40 85, 0 110, 0 110
+             C 0 110, -40 85, -70 40
+             C -85 -20, -55 -70, 0 -95 Z" 
+          fill="url(#green)" opacity="0.95" filter="url(#glow)"/>
+    <!-- Leaf vein -->
+    <path d="M0 -80 L0 95" stroke="#0a2e18" stroke-width="4" fill="none"/>
+    <path d="M0 -40 Q30 -20 45 15" stroke="#0a2e18" stroke-width="2.5" fill="none"/>
+    <path d="M0 -10 Q-28 5 -40 40" stroke="#0a2e18" stroke-width="2.5" fill="none"/>
+    <path d="M0 30 Q25 50 35 75" stroke="#0a2e18" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Small circuit nodes -->
+  <circle cx="160" cy="160" r="6" fill="#f4bf37"/>
+  <circle cx="352" cy="160" r="6" fill="#f4bf37"/>
+  <circle cx="160" cy="340" r="6" fill="#39ff88"/>
+  <circle cx="352" cy="340" r="6" fill="#39ff88"/>
+  <circle cx="256" cy="100" r="5" fill="#ffd968"/>
+  <circle cx="256" cy="400" r="5" fill="#16d66b"/>
+</svg>

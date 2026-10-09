@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Carbon Credit Nex — Crédito de Carbono, Blockchain e Tecnologia Verde.">
+  <title>Carbon Credit Nex | Crédito de Carbono</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#030504;
+      --panel:#08110c;
+      --panel-2:#0b1710;
+      --green:#16d66b;
+      --green-2:#39ff88;
+      --gold:#f4bf37;
+      --gold-2:#ffd968;
+      --blue:#1597ff;
+      --text:#f5fff8;
+      --muted:#9eb0a4;
+      --line:rgba(70,255,145,.16);
+      --shadow:0 0 45px rgba(24,220,105,.12);
+      --danger:#ff5c5c;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%,rgba(21,214,107,.09),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(244,191,55,.07),transparent 25%),
+        var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    button{font:inherit;cursor:pointer}
+    .container{width:min(1180px,92%);margin:auto}
+
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(3,5,4,.78);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--line);
+    }
+    nav{
+      min-height:76px;display:flex;align-items:center;justify-content:space-between;
+      gap:25px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+    .brand img{
+      width:45px;height:45px;border-radius:50%;object-fit:cover;
+      border:1px solid rgba(244,191,55,.7);
+      box-shadow:0 0 18px rgba(244,191,55,.2);
+    }
+    .brand span{font-family:Orbitron,sans-serif;font-size:15px}
+    .brand small{display:block;color:var(--gold-2);font-size:8px;letter-spacing:2px;margin-top:3px}
+    .links{display:flex;gap:26px;color:#c6d5cc;font-size:14px}
+    .links a:hover{color:var(--green-2)}
+    .nav-btn,.hero-btn{
+      border:1px solid rgba(57,255,136,.45);
+      background:linear-gradient(135deg,rgba(22,214,107,.18),rgba(244,191,55,.08));
+      color:white;border-radius:12px;padding:12px 17px;
+      box-shadow:0 0 20px rgba(22,214,107,.08);
+    }
+
+    .hero{min-height:100vh;padding:135px 0 75px;display:flex;align-items:center;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;color:var(--green-2);
+      border:1px solid var(--line);background:rgba(22,214,107,.06);
+      border-radius:999px;padding:8px 13px;font-size:12px;letter-spacing:1.3px;text-transform:uppercase;
+      margin-bottom:22px
+    }
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--green-2);box-shadow:0 0 12px var(--green)}
+    h1{
+      font-family:Orbitron,sans-serif;font-size:clamp(38px,6vw,76px);line-height:1.02;
+      letter-spacing:-2px;margin-bottom:22px
+    }
+    h1 span{color:var(--gold-2);text-shadow:0 0 30px rgba(244,191,55,.16)}
+    .hero p{color:var(--muted);font-size:17px;line-height:1.8;max-width:650px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .primary{
+      background:linear-gradient(135deg,var(--green),#0d9b4a);
+      border:0;color:#00170a;font-weight:800;padding:14px 20px;border-radius:12px
+    }
+    .secondary{padding:13px 20px;border-radius:12px;border:1px solid rgba(244,191,55,.35);color:var(--gold-2);background:transparent}
+    .danger-btn{
+      background:linear-gradient(135deg,#ff5c5c,#c0392b);
+      border:0;color:white;font-weight:700;padding:12px 18px;border-radius:12px;width:100%;margin-top:12px
+    }
+
+    .hero-card{
+      position:relative;border:1px solid rgba(244,191,55,.23);border-radius:24px;overflow:hidden;
+      background:#050706;box-shadow:var(--shadow),0 0 80px rgba(244,191,55,.08)
+    }
+    .hero-card img{display:block;width:100%;height:520px;object-fit:cover;opacity:.84}
+    .hero-card:after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 45%,rgba(3,5,4,.92) 100%);
+    }
+    .hero-card-label{
+      position:absolute;z-index:2;left:22px;right:22px;bottom:20px;
+      display:flex;justify-content:space-between;align-items:end;gap:15px
+    }
+    .hero-card-label strong{font-family:Orbitron;font-size:18px}
+    .hero-card-label small{color:#aebdb4;display:block;margin-top:5px}
+
+    section{padding:95px 0}
+    .section-title{text-align:center;margin-bottom:45px}
+    .section-title h2{font-family:Orbitron;font-size:clamp(27px,4vw,42px);margin-bottom:12px}
+    .section-title p{color:var(--muted);max-width:650px;margin:auto;line-height:1.7}
+
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+    .stat,.card{
+      background:linear-gradient(145deg,rgba(12,24,17,.9),rgba(5,11,8,.95));
+      border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:var(--shadow)
+    }
+    .stat b{display:block;font-family:Orbitron;font-size:28px;color:var(--gold-2);margin-bottom:8px}
+    .stat span{color:var(--muted);font-size:13px}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card .icon{
+      width:45px;height:45px;border-radius:12px;display:grid;place-items:center;
+      background:rgba(22,214,107,.1);border:1px solid rgba(57,255,136,.2);font-size:21px;margin-bottom:18px
+    }
+    .card h3{font-family:Orbitron;font-size:18px;margin-bottom:10px}
+    .card p{color:var(--muted);line-height:1.7;font-size:14px}
+
+    .dashboard{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch
+    }
+    .dashboard-main,.wallet{
+      border:1px solid var(--line);border-radius:22px;padding:28px;
+      background:linear-gradient(145deg,#09160e,#050a07)
+    }
+    .balance{font-family:Orbitron;font-size:45px;color:var(--green-2);margin:15px 0 7px}
+    .muted{color:var(--muted)}
+    .meter{height:9px;background:#142018;border-radius:20px;overflow:hidden;margin:20px 0}
+    .meter div{width:72%;height:100%;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:20px}
+    .rows{display:grid;gap:12px}
+    .row{
+      display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);
+      color:#c7d5cc;font-size:14px
+    }
+    .row strong{color:white}
+    .wallet-logo{width:70px;height:70px;border-radius:50%;object-fit:cover;border:1px solid var(--gold);margin-bottom:18px}
+    .wallet h3{font-family:Orbitron;margin-bottom:9px}
+    .wallet button{width:100%;margin-top:12px}
+
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;counter-reset:step}
+    .step{position:relative;padding:25px;border:1px solid var(--line);border-radius:18px;background:#071009}
+    .step:before{counter-increment:step;content:"0" counter(step);color:var(--gold-2);font-family:Orbitron;font-size:12px}
+    .step h3{margin:14px 0 8px}
+    .step p{color:var(--muted);font-size:13px;line-height:1.6}
+
+    .cta{
+      text-align:center;border:1px solid rgba(244,191,55,.22);border-radius:25px;padding:55px 25px;
+      background:radial-gradient(circle at center,rgba(22,214,107,.1),transparent 55%),#071009
+    }
+    .cta h2{font-family:Orbitron;font-size:clamp(27px,4vw,42px);margin-bottom:14px}
+    .cta p{color:var(--muted);max-width:620px;margin:0 auto 25px;line-height:1.7}
+
+    footer{border-top:1px solid var(--line);padding:30px 0;color:#829289;font-size:12px}
+    .footer-flex{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .gold{color:var(--gold-2)}
+
+    /* ===== NOVAS SEÇÕES WEB3 ===== */
+    .web3-panel{
+      margin-top:22px;padding:18px;border-radius:16px;
+      background:rgba(0,0,0,.35);border:1px solid rgba(57,255,136,.15)
+    }
+    .web3-panel h4{font-family:Orbitron;font-size:14px;margin-bottom:12px;color:var(--gold-2)}
+    .web3-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px}
+    .web3-row span{color:var(--muted)}
+    .web3-row strong{color:var(--green-2);font-family:Orbitron}
+    .input-group{margin:14px 0}
+    .input-group label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+    .input-group input{
+      width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(57,255,136,.25);
+      background:#0a140e;color:white;font-size:14px
+    }
+    .input-group input:focus{outline:none;border-color:var(--green-2)}
+    .tx-status{
+      margin-top:14px;padding:12px;border-radius:10px;font-size:12px;
+      background:rgba(22,214,107,.08);border:1px solid rgba(57,255,136,.2);display:none
+    }
+    .tx-status.show{display:block}
+    .tx-status.error{background:rgba(255,92,92,.1);border-color:rgba(255,92,92,.3);color:#ff8a8a}
+    .tx-status.success{color:var(--green-2)}
+    .network-badge{
+      display:inline-flex;align-items:center;gap:6px;font-size:11px;
+      padding:5px 10px;border-radius:20px;background:rgba(22,214,107,.1);
+      border:1px solid rgba(57,255,136,.25);color:var(--green-2);margin-top:10px
+    }
+    .network-badge.wrong{background:rgba(255,92,92,.1);border-color:rgba(255,92,92,.3);color:#ff8a8a}
+
+    @media(max-width:900px){
+      .links{display:none}
+      .hero-grid,.dashboard{grid-template-columns:1fr}
+      .hero-card img{height:390px}
+      .stats,.process{grid-template-columns:repeat(2,1fr)}
+      .cards{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:600px){
+      nav{min-height:68px}
+      .brand img{width:39px;height:39px}
+      .brand span{font-size:12px}
+      .nav-btn{padding:9px 11px;font-size:12px}
+      .hero{padding-top:105px}
+      .hero p{font-size:15px}
+      .hero-card img{height:290px}
+      section{padding:70px 0}
+      .stats,.cards,.process{grid-template-columns:1fr}
+      .balance{font-size:34px}
+      .dashboard-main,.wallet{padding:22px}
+    }
+
+    .topline{
+      height:28px;background:#020302;border-bottom:1px solid rgba(57,255,136,.08);
+      color:#708178;font-size:9px;letter-spacing:1.2px;text-transform:uppercase
+    }
+    .topline .container{height:100%;display:flex;align-items:center;justify-content:space-between}
+    .topline span:first-child{color:#55e994}
+    .hero-copy{position:relative}
+    .hero-copy:before{
+      content:"";position:absolute;width:250px;height:250px;left:-80px;top:-100px;
+      background:rgba(22,214,107,.08);filter:blur(70px);border-radius:50%;pointer-events:none
+    }
+    .trust-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:23px;color:#82968a;font-size:11px}
+    .trust-row span{padding:7px 0}
+    .ticker{overflow:hidden;border-top:1px solid rgba(57,255,136,.09);border-bottom:1px solid rgba(57,255,136,.09);background:#050906}
+    .ticker-track{
+      display:flex;gap:25px;white-space:nowrap;padding:13px 0;min-width:max-content;
+      animation:marquee 25s linear infinite;color:#7d9185;font-size:10px;letter-spacing:1.6px
+    }
+    .ticker-track span:nth-of-type(3n+1){color:#49e88a}
+    .ticker-track b{color:#cda83d}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    .market-section{padding-top:35px}
+    .market-grid{display:grid;grid-template-columns:1.3fr .85fr .85fr;gap:16px}
+    .market-card{
+      min-height:215px;padding:23px;border:1px solid var(--line);border-radius:20px;
+      background:linear-gradient(145deg,rgba(11,25,16,.95),rgba(4,9,6,.98));box-shadow:var(--shadow);
+      position:relative;overflow:hidden
+    }
+    .market-card:after{content:"";position:absolute;inset:auto -50px -90px auto;width:180px;height:180px;border-radius:50%;background:rgba(22,214,107,.07);filter:blur(25px)}
+    .market-head{display:flex;justify-content:space-between;align-items:center;color:#83978b;font-size:10px;letter-spacing:1.3px}
+    .up{color:#44eb8a}.gold{color:var(--gold-2)}
+    .market-value{font-family:Orbitron;font-size:32px;margin:20px 0 14px}
+    .market-value small{font-family:Inter;font-size:11px;color:#809087}
+    .market-foot{display:flex;justify-content:space-between;color:#718078;font-size:11px;margin-top:18px}
+    .market-foot strong{color:#d8e4dc}
+    .chart{height:55px;display:flex;align-items:end;gap:6px;margin-top:4px}
+    .chart i{display:block;flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(to top,#0e9e4e,#3dff8c);opacity:.8}
+    .chart i:nth-child(1){height:24%}.chart i:nth-child(2){height:35%}.chart i:nth-child(3){height:29%}
+    .chart i:nth-child(4){height:44%}.chart i:nth-child(5){height:38%}.chart i:nth-child(6){height:55%}
+    .chart i:nth-child(7){height:47%}.chart i:nth-child(8){height:68%}.chart i:nth-child(9){height:61%}
+    .chart i:nth-child(10){height:78%}.chart i:nth-child(11){height:70%}.chart i:nth-child(12){height:91%}
+    .big-number{font-family:Orbitron;font-size:43px;color:#f5fff8;margin:23px 0 7px}
+    .market-card p{color:#788a80;font-size:12px;line-height:1.6;max-width:230px}
+    .mini-progress{height:5px;background:#17231b;border-radius:8px;margin-top:22px;overflow:hidden}
+    .mini-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:8px}
+    .impact-badges{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+    .impact-badges span{font-size:10px;border:1px solid rgba(57,255,136,.15);padding:7px 9px;border-radius:8px;color:#9caf9f}
+    .primary,.secondary,.nav-btn,.danger-btn{transition:.25s ease}
+    .primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(22,214,107,.18)}
+    .secondary:hover,.nav-btn:hover{border-color:rgba(244,191,55,.65);transform:translateY(-2px)}
+    .card,.stat,.market-card,.dashboard-main,.wallet,.step{transition:transform .25s ease,border-color .25s ease}
+    .card:hover,.stat:hover,.market-card:hover,.step:hover{transform:translateY(-5px);border-color:rgba(57,255,136,.35)}
+    @media(max-width:900px){
+      .topline span:last-child{display:none}
+      .market-grid{grid-template-columns:1fr 1fr}
+      .market-card.featured{grid-column:1/-1}
+    }
+    @media(max-width:600px){
+      .topline{display:none}
+      .market-grid{grid-template-columns:1fr}
+      .market-card.featured{grid-column:auto}
+      .trust-row{gap:10px;font-size:10px}
+    }
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+  </style>
+</head>
+
+<body>
+<div class="topline">
+  <div class="container">
+    <span>● REDE CARBON CREDIT NEX ONLINE</span>
+    <span>BLOCKCHAIN • GREEN ASSETS • CARBON MARKET</span>
+  </div>
+</div>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#inicio" class="brand">
+        <img src="logo-carbon.jpg" alt="Carbon Credit Nex">
+        <div>
+          <span>CARBON CREDIT NEX</span>
+          <small>GREEN ASSETS • BLOCKCHAIN</small>
+        </div>
+      </a>
+
+      <div class="links">
+        <a href="#creditos">Mercado</a>
+        <a href="#tecnologia">Tecnologia</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#processo">Processo</a>
+      </div>
+
+      <button class="nav-btn" id="navConnectBtn" onclick="connectWallet()">Conectar Wallet</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><i class="dot"></i> Ativos ambientais na blockchain</div>
+        <h1>O futuro do <span>crédito de carbono</span> é digital.</h1>
+        <p>
+          Conectamos sustentabilidade, ativos ambientais e tecnologia blockchain
+          para criar uma experiência transparente, rastreável e preparada para a nova economia verde.
+        </p>
+
+        <div class="actions">
+          <a class="primary hero-btn" href="#creditos">Explorar créditos</a>
+          <a class="secondary" href="#dashboard">Ver dashboard</a>
+        </div>
+
+        <div class="trust-row">
+          <span>✓ Rastreabilidade</span>
+          <span>✓ Transparência</span>
+          <span>✓ Infraestrutura Web3</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="hero-deploy.jpg" alt="Tecnologia blockchain e deploy">
+        <div class="hero-card-label">
+          <div>
+            <strong>BLOCKCHAIN • DEPLOY</strong>
+            <small>Infraestrutura digital para ativos ambientais</small>
+          </div>
+          <span class="gold">● LIVE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>🌱 CRÉDITO DE CARBONO</span><b>•</b>
+      <span>🔗 BLOCKCHAIN</span><b>•</b>
+      <span>🌎 IMPACTO AMBIENTAL</span><b>•</b>
+      <span>⚡ WEB3</span><b>•</b>
+      <span>🌱 CRÉDITO DE CARBONO</span><b>•</b>
+      <span>🔗 BLOCKCHAIN</span><b>•</b>
+      <span>🌎 IMPACTO AMBIENTAL</span><b>•</b>
+      <span>⚡ WEB3</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="stats">
+        <div class="stat"><b>1 tCO₂e</b><span>Unidade de referência de crédito de carbono</span></div>
+        <div class="stat"><b>100%</b><span>Rastreabilidade digital proposta</span></div>
+        <div class="stat"><b>24/7</b><span>Consulta de ativos e registros</span></div>
+        <div class="stat"><b>Web3</b><span>Infraestrutura preparada para blockchain</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="creditos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Créditos de Carbono</h2>
+        <p>Uma camada digital para visualizar, rastrear e organizar ativos ambientais.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🌱</div>
+          <h3>Ativo Ambiental</h3>
+          <p>Organize créditos de carbono e informações do projeto em uma interface digital clara.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🔗</div>
+          <h3>Rastreabilidade</h3>
+          <p>Associe registros, identificadores e dados de blockchain para facilitar a verificação.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🌎</div>
+          <h3>Impacto Climático</h3>
+          <p>Apresente o impacto ambiental de forma visual, permitindo acompanhar métricas de CO₂e.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="market-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Mercado Ambiental</h2>
+        <p>Indicadores demonstrativos para uma experiência de mercado digital mais completa.</p>
+      </div>
+      <div class="market-grid">
+        <div class="market-card featured">
+          <div class="market-head"><span>CARBON NEX INDEX</span><span class="up">▲ 4,82%</span></div>
+          <div class="market-value">US$ 28,40 <small>/ tCO₂e</small></div>
+          <div class="chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="market-foot"><span>Volume 24h</span><strong>184.920 tCO₂e</strong></div>
+        </div>
+        <div class="market-card">
+          <div class="market-head"><span>PROJETOS ATIVOS</span><span class="gold">18</span></div>
+          <div class="big-number">18</div>
+          <p>Projetos ambientais acompanhados na plataforma.</p>
+          <div class="mini-progress"><span style="width:78%"></span></div>
+        </div>
+        <div class="market-card">
+          <div class="market-head"><span>IMPACTO REGISTRADO</span><span class="up">+12,6%</span></div>
+          <div class="big-number">12.840</div>
+          <p>tCO₂e em créditos demonstrativos registrados.</p>
+          <div class="impact-badges"><span>🌱 Verde</span><span>🔗 On-chain</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard">
+    <div class="container">
+      <div class="section-title">
+        <h2>Carbon Dashboard</h2>
+        <p>Uma visão centralizada dos ativos e do impacto ambiental com conexão Web3 real.</p>
+      </div>
+
+      <div class="dashboard">
+        <div class="dashboard-main">
+          <span class="muted">Saldo ambiental on-chain</span>
+          <div class="balance" id="tokenBalance">— tCO₂e</div>
+          <span class="muted">Créditos registrados na carteira</span>
+          <div class="meter"><div id="balanceMeter" style="width:0%"></div></div>
+          <div class="rows">
+            <div class="row"><span>Créditos disponíveis</span><strong id="availableCredits">—</strong></div>
+            <div class="row"><span>Créditos aposentados</span><strong id="retiredCredits">—</strong></div>
+            <div class="row"><span>Projetos vinculados</span><strong>18</strong></div>
+            <div class="row"><span>Status da rede</span><strong class="gold" id="networkStatus">Aguardando conexão</strong></div>
+          </div>
+
+          <!-- Painel de ações Web3 -->
+          <div class="web3-panel" id="actionsPanel" style="display:none">
+            <h4>Ações de Crédito de Carbono</h4>
+            
+            <div class="input-group">
+              <label>Quantidade para aposentar (tCO₂e)</label>
+              <input type="number" id="retireAmount" placeholder="Ex: 10" min="1" step="1">
+            </div>
+            
+            <button class="danger-btn" onclick="retireCredits()">🔥 Aposentar Créditos</button>
+            
+            <div class="tx-status" id="txStatus"></div>
+          </div>
+        </div>
+
+        <aside class="wallet">
+          <img class="wallet-logo" src="logo-carbon.jpg" alt="Logo Carbon Credit Nex">
+          <h3>Minha Wallet</h3>
+          <p class="muted">Conecte sua carteira para visualizar e gerenciar seus créditos de carbono on-chain.</p>
+          
+          <button class="primary" id="walletConnectBtn" onclick="connectWallet()">Conectar carteira</button>
+          
+          <p id="walletStatus" class="muted" style="margin-top:14px;font-size:12px">Carteira não conectada.</p>
+          
+          <div class="network-badge" id="networkBadge" style="display:none">
+            <span>●</span> <span id="networkName">—</span>
+          </div>
+
+          <div class="web3-panel" id="walletInfo" style="display:none;margin-top:18px">
+            <div class="web3-row">
+              <span>Endereço</span>
+              <strong id="walletAddressShort">—</strong>
+            </div>
+            <div class="web3-row">
+              <span>Saldo Token</span>
+              <strong id="walletTokenBalance">—</strong>
+            </div>
+            <div class="web3-row">
+              <span>Rede</span>
+              <strong id="walletNetwork">—</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnologia">
+    <div class="container">
+      <div class="section-title">
+        <h2>Como funciona</h2>
+        <p>Fluxo visual preparado para integração com contratos inteligentes e provedores de dados.</p>
+      </div>
+
+      <div class="process">
+        <div class="step"><h3>Projeto</h3><p>Cadastro do projeto ambiental e seus dados de referência.</p></div>
+        <div class="step"><h3>Verificação</h3><p>Dados e documentos passam pelo processo de validação definido pela operação.</p></div>
+        <div class="step"><h3>Tokenização</h3><p>O ativo é representado digitalmente conforme o modelo jurídico e técnico adotado.</p></div>
+        <div class="step"><h3>Rastreio</h3><p>O registro pode ser consultado por identificador, carteira ou transação.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="container">
+      <div class="cta">
+        <h2>Construa a próxima geração de ativos verdes.</h2>
+        <p>
+          Uma identidade digital para projetos de carbono que une sustentabilidade,
+          tecnologia e transparência.
+        </p>
+        <a href="mailto:contato@carboncreditnex.com" class="primary hero-btn">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-flex">
+    <span>© 2026 Carbon Credit Nex</span>
+    <span>Crédito de Carbono <span class="gold">•</span> Blockchain <span class="gold">•</span> Green Assets</span>
+  </div>
+</footer>
+
+<script>
+  // =====================================================
+  // CONFIGURAÇÃO WEB3 - CARBON CREDIT NEX
+  // =====================================================
+
+  // =====================================================
+  // ENDEREÇOS DOS CONTRATOS
+  // Substitua pelos endereços reais após o deploy no Remix
+  // =====================================================
+  const CONTRACTS = {
+    // Cole aqui o endereço do contrato CarbonCredit.sol após o deploy
+    carbonToken: "0x0000000000000000000000000000000000000000"  // ← SUBSTITUA PELO ENDEREÇO REAL
+  };
+
+  const NETWORKS = {
+    sepolia: {
+      chainId: "0xaa36a7",
+      chainName: "Sepolia Testnet",
+      rpcUrls: ["https://rpc.sepolia.org"],
+      nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
+      blockExplorerUrls: ["https://sepolia.etherscan.io"]
+    },
+    ethereum: {
+      chainId: "0x1",
+      chainName: "Ethereum Mainnet",
+      rpcUrls: ["https://eth.llamarpc.com"],
+      nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
+      blockExplorerUrls: ["https://etherscan.io"]
+    },
+    polygon: {
+      chainId: "0x89",
+      chainName: "Polygon Mainnet",
+      rpcUrls: ["https://polygon-rpc.com"],
+      nativeCurrency: { name: "MATIC", symbol: "MATIC", decimals: 18 },
+      blockExplorerUrls: ["https://polygonscan.com"]
+    }
+  };
+
+  // Rede alvo (mude para ethereum ou polygon em produção)
+  const TARGET_NETWORK = NETWORKS.sepolia;
+
+  // ABI completa do contrato CarbonCredit.sol
+  const CARBON_ABI = [
+    "function balanceOf(address owner) view returns (uint256)",
+    "function decimals() view returns (uint8)",
+    "function symbol() view returns (string)",
+    "function name() view returns (string)",
+    "function totalSupply() view returns (uint256)",
+    "function totalRetired() view returns (uint256)",
+    "function transfer(address to, uint256 amount) returns (bool)",
+    "function approve(address spender, uint256 amount) returns (bool)",
+    "function retire(uint256 amount)",
+    "function retireFrom(address account, uint256 amount)",
+    "function mint(address to, uint256 amount)",
+    "function availableCredits(address account) view returns (uint256)",
+    "event Retired(address indexed account, uint256 amount, uint256 timestamp)"
+  ];
+
+  let currentAccount = null;
+  let provider = null;
+  let signer = null;
+  let tokenContract = null;
+
+  // =====================================================
+  // FUNÇÕES PRINCIPAIS
+  // =====================================================
+
+  async function connectWallet() {
+    const statusEl = document.getElementById("walletStatus");
+
+    if (!window.ethereum) {
+      alert("Nenhuma carteira Web3 detectada.\n\nInstale MetaMask:\nhttps://metamask.io");
+      statusEl.textContent = "Carteira não detectada";
+      statusEl.style.color = "#ff5c5c";
+      return;
+    }
+
+    try {
+      // Solicita contas
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      if (!accounts || accounts.length === 0) {
+        statusEl.textContent = "Nenhuma conta autorizada";
+        return;
+      }
+
+      currentAccount = accounts[0];
+
+      // Garante a rede correta
+      await ensureCorrectNetwork();
+
+      // Atualiza UI
+      updateWalletUI(currentAccount);
+
+      // Carrega saldo do token
+      await loadTokenBalance(currentAccount);
+
+      // Listeners
+      setupListeners();
+
+      // Mostra painéis
+      document.getElementById("actionsPanel").style.display = "block";
+      document.getElementById("walletInfo").style.display = "block";
+      document.getElementById("networkBadge").style.display = "inline-flex";
+
+    } catch (error) {
+      console.error(error);
+      if (error.code === 4001) {
+        statusEl.textContent = "Conexão rejeitada pelo usuário";
+      } else {
+        statusEl.textContent = "Erro: " + (error.message || "desconhecido");
+      }
+      statusEl.style.color = "#ff5c5c";
+    }
+  }
+
+  async function ensureCorrectNetwork() {
+    const currentChainId = await window.ethereum.request({ method: "eth_chainId" });
+
+    if (currentChainId.toLowerCase() !== TARGET_NETWORK.chainId.toLowerCase()) {
+      try {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: TARGET_NETWORK.chainId }]
+        });
+      } catch (switchError) {
+        if (switchError.code === 4902) {
+          await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [TARGET_NETWORK]
+          });
+        } else {
+          throw switchError;
+        }
+      }
+    }
+  }
+
+  function updateWalletUI(account) {
+    const short = account.slice(0, 6) + "..." + account.slice(-4);
+    
+    document.getElementById("walletStatus").textContent = "Conectada: " + short;
+    document.getElementById("walletStatus").style.color = "#39ff88";
+    
+    document.getElementById("navConnectBtn").textContent = short;
+    document.getElementById("walletConnectBtn").textContent = "Carteira Conectada";
+    
+    document.getElementById("walletAddressShort").textContent = short;
+    document.getElementById("networkName").textContent = TARGET_NETWORK.chainName;
+    document.getElementById("walletNetwork").textContent = TARGET_NETWORK.chainName;
+    document.getElementById("networkStatus").textContent = "Operacional";
+  }
+
+  async function loadTokenBalance(account) {
+    // Se o contrato ainda for 0x000... mostra dados demonstrativos
+    if (CONTRACTS.carbonToken === "0x0000000000000000000000000000000000000000") {
+      const demoBalance = 12840;
+      document.getElementById("tokenBalance").textContent = demoBalance.toLocaleString("pt-BR") + " tCO₂e";
+      document.getElementById("availableCredits").textContent = "8.420";
+      document.getElementById("retiredCredits").textContent = "4.420";
+      document.getElementById("walletTokenBalance").textContent = demoBalance.toLocaleString("pt-BR");
+      document.getElementById("balanceMeter").style.width = "72%";
+      return;
+    }
+
+    try {
+      if (window.ethers) {
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        signer = provider.getSigner();
+        tokenContract = new ethers.Contract(CONTRACTS.carbonToken, CARBON_ABI, signer);
+
+        const rawBalance = await tokenContract.balanceOf(account);
+        const decimals = await tokenContract.decimals();
+        const balance = Number(ethers.utils.formatUnits(rawBalance, decimals));
+
+        let retired = 0;
+        try {
+          const rawRetired = await tokenContract.totalRetired();
+          retired = Number(ethers.utils.formatUnits(rawRetired, decimals));
+        } catch(e) {}
+
+        document.getElementById("tokenBalance").textContent = balance.toLocaleString("pt-BR") + " tCO₂e";
+        document.getElementById("availableCredits").textContent = balance.toLocaleString("pt-BR");
+        document.getElementById("retiredCredits").textContent = retired.toLocaleString("pt-BR");
+        document.getElementById("walletTokenBalance").textContent = balance.toLocaleString("pt-BR");
+        document.getElementById("balanceMeter").style.width = Math.min(100, (balance / 20000) * 100) + "%";
+      } else {
+        console.warn("ethers.js não carregado – usando dados demonstrativos");
+      }
+    } catch (err) {
+      console.error("Erro ao ler saldo:", err);
+      document.getElementById("tokenBalance").textContent = "Erro ao ler";
+    }
+  }
+
+  async function retireCredits() {
+    const amountInput = document.getElementById("retireAmount");
+    const amount = Number(amountInput.value);
+    const statusEl = document.getElementById("txStatus");
+
+    if (!currentAccount) {
+      alert("Conecte a carteira primeiro.");
+      return;
+    }
+
+    if (!amount || amount <= 0) {
+      statusEl.className = "tx-status show error";
+      statusEl.textContent = "Digite uma quantidade válida.";
+      return;
+    }
+
+    // Modo demonstrativo
+    if (CONTRACTS.carbonToken === "0x0000000000000000000000000000000000000000") {
+      statusEl.className = "tx-status show success";
+      statusEl.innerHTML = `✅ <strong>Simulação:</strong> ${amount} tCO₂e seriam aposentados.<br>
+        <small>Configure o endereço do contrato real para transações on-chain.</small>`;
+      
+      const current = Number(document.getElementById("availableCredits").textContent.replace(/\./g,"")) || 8420;
+      const newAvailable = Math.max(0, current - amount);
+      document.getElementById("availableCredits").textContent = newAvailable.toLocaleString("pt-BR");
+      document.getElementById("retiredCredits").textContent = (4420 + amount).toLocaleString("pt-BR");
+      return;
+    }
+
+    try {
+      statusEl.className = "tx-status show";
+      statusEl.textContent = "⏳ Enviando transação... confirme no MetaMask";
+
+      if (window.ethers && tokenContract) {
+        const decimals = await tokenContract.decimals();
+        const value = ethers.utils.parseUnits(amount.toString(), decimals);
+
+        // Chama a função retire do contrato real
+        const tx = await tokenContract.retire(value);
+        statusEl.textContent = "⏳ Aguardando confirmação na blockchain...";
+        
+        await tx.wait();
+
+        statusEl.className = "tx-status show success";
+        statusEl.innerHTML = `✅ ${amount} tCO₂e aposentados com sucesso!<br>
+          <small>Tx: ${tx.hash.slice(0,10)}...${tx.hash.slice(-6)}</small>`;
+        
+        // Atualiza o saldo
+        await loadTokenBalance(currentAccount);
+        amountInput.value = "";
+      } else {
+        statusEl.className = "tx-status show error";
+        statusEl.textContent = "ethers.js não disponível";
+      }
+    } catch (err) {
+      console.error(err);
+      statusEl.className = "tx-status show error";
+      statusEl.textContent = "Erro na transação: " + (err.reason || err.message || "desconhecido");
+    }
+  }
+
+  function setupListeners() {
+    if (!window.ethereum) return;
+
+    window.ethereum.removeAllListeners?.();
+
+    window.ethereum.on("accountsChanged", (accounts) => {
+      if (accounts.length === 0) {
+        currentAccount = null;
+        document.getElementById("walletStatus").textContent = "Carteira desconectada";
+        document.getElementById("walletStatus").style.color = "#9eb0a4";
+        document.getElementById("navConnectBtn").textContent = "Conectar Wallet";
+        document.getElementById("walletConnectBtn").textContent = "Conectar carteira";
+        document.getElementById("actionsPanel").style.display = "none";
+        document.getElementById("walletInfo").style.display = "none";
+      } else {
+        currentAccount = accounts[0];
+        updateWalletUI(currentAccount);
+        loadTokenBalance(currentAccount);
+      }
+    });
+
+    window.ethereum.on("chainChanged", () => {
+      window.location.reload();
+    });
+  }
+
+  // Verifica se já estava conectado
+  async function checkIfWalletIsConnected() {
+    if (!window.ethereum) return;
+    try {
+      const accounts = await window.ethereum.request({ method: "eth_accounts" });
+      if (accounts && accounts[0]) {
+        currentAccount = accounts[0];
+        updateWalletUI(currentAccount);
+        await loadTokenBalance(currentAccount);
+        setupListeners();
+        document.getElementById("actionsPanel").style.display = "block";
+        document.getElementById("walletInfo").style.display = "block";
+        document.getElementById("networkBadge").style.display = "inline-flex";
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", checkIfWalletIsConnected);
+
+  // =====================================================
+  // ANIMAÇÕES
+  // =====================================================
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".section-title,.stat,.card,.market-card,.step,.dashboard-main,.wallet,.cta")
+    .forEach(el => {
+      el.classList.add("reveal");
+      revealObserver.observe(el);
+    });
+</script>
+
+<!-- Opcional: carregar ethers.js para interações reais com contratos -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</body>
+</html>
