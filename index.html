@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Carbon Credit Nex — Crédito de Carbono, Blockchain e Tecnologia Verde.">
+<title>Carbon Credit Nex | Crédito de Carbono</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050403;
+  --panel:#0e0c08;
+  --green:#e8b020;
+  --green2:#ffd54a;
+  --gold:#f4bf37;
+  --gold2:#ffe082;
+  --text:#fff8e8;
+  --muted:#b0a48a;
+  --line:rgba(244,191,55,.22);
+  --shadow:0 0 50px rgba(244,191,55,.14);
+  --amber:#ffc107;
+  --amber2:#ffb300;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%,rgba(244,191,55,.10),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(255,193,7,.07),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+.container{width:min(1180px,92%);margin:auto}
+
+/* TOPLINE */
+.topline{
+  height:28px;
+  background:#030201;
+  border-bottom:1px solid rgba(244,191,55,.12);
+  color:#8a7e68;
+  font-size:9px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+.topline .container{height:100%;display:flex;align-items:center;justify-content:space-between}
+.topline span:first-child{color:#ffd54a}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:28px;left:0;right:0;
+  z-index:100;
+  background:rgba(5,4,3,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+nav{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+.brand-mark{
+  width:45px;height:45px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  border:1px solid rgba(255,213,74,.8);
+  box-shadow:0 0 20px rgba(244,191,55,.35);
+  font-size:24px;
+  background:radial-gradient(circle,#3d2e0a,#0a0804);
+}
+.brand span{font-family:Orbitron,sans-serif;font-size:15px}
+.brand small{display:block;color:var(--gold2);font-size:8px;letter-spacing:2px;margin-top:3px}
+.links{display:flex;gap:24px;color:#d4c9b0;font-size:13px}
+.links a:hover{color:var(--green2)}
+.nav-btn,.secondary{
+  border:1px solid rgba(244,191,55,.40);
+  background:linear-gradient(135deg,rgba(244,191,55,.18),rgba(255,193,7,.06));
+  color:white;
+  border-radius:12px;
+  padding:12px 16px;
+}
+
+/* HERO */
+.hero{min-height:100vh;padding:150px 0 75px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--green2);
+  border:1px solid var(--line);
+  background:rgba(244,191,55,.08);
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:11px;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green2);box-shadow:0 0 12px var(--green)}
+h1{
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(36px,5.3vw,70px);
+  line-height:1.06;
+  letter-spacing:-2px;
+  margin-bottom:22px;
+}
+h1 span{color:var(--gold2);text-shadow:0 0 30px rgba(244,191,55,.16)}
+.hero-copy p{color:var(--muted);font-size:16px;line-height:1.8;max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.primary{
+  background:linear-gradient(135deg,#ffd54a,#e8a010);
+  border:0;color:#1a1200;font-weight:800;
+  padding:14px 20px;border-radius:12px;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.trust-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:23px;color:#9a8e78;font-size:11px}
+.trust-row span{padding:7px 0}
+
+/* ORBIT GRAPHIC — MELHORADO */
+.orbit-card{
+  position:relative;
+  min-height:540px;
+  overflow:visible;
+  border:none;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  isolation:isolate;
+}
+.orbit-card:before,.orbit-card:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.orbit-card:before{
+  inset:5%;
+  border:none;
+  box-shadow:none;
+  background:radial-gradient(circle at center,rgba(120,80,10,.22),transparent 55%);
+}
+.orbit-card:after{
+  width:320px;height:320px;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(244,191,55,.12);
+  filter:blur(70px);
+  z-index:-1;
+}
+.orbit-caption{
+  position:absolute;left:8px;right:8px;bottom:8px;
+  display:flex;justify-content:space-between;gap:12px;align-items:end;z-index:5;
+}
+.orbit-caption strong{font-family:Orbitron;font-size:13px;letter-spacing:.7px}
+.orbit-caption small{display:block;color:#a89870;font-size:10px;margin-top:6px}
+.live{color:var(--gold2);font-size:10px;letter-spacing:1px;white-space:nowrap}
+
+.orbit-scene{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:25px}
+
+/* Canvas particles layer */
+#blockchainCanvas{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:1;
+  border-radius:0;
+}
+
+.core{
+  position:relative;z-index:3;
+  width:120px;height:120px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:50px;
+  background:radial-gradient(circle at 35% 25%,#ffe082,#c99010 58%,#3d2a05);
+  border:1px solid rgba(255,220,120,.9);
+  box-shadow:0 0 30px rgba(255,200,50,.60),inset 0 0 22px rgba(0,0,0,.40);
+  animation:corePulse 3s ease-in-out infinite;
+}
+.core:after{
+  content:"CARBON NEX";
+  position:absolute;top:130px;
+  white-space:nowrap;
+  font:700 10px Orbitron;
+  color:#fff3c4;
+  letter-spacing:2px;
+  text-shadow:0 0 14px rgba(255,200,50,.6);
+}
+
+.orbit{
+  position:absolute;left:50%;top:47%;
+  border:1px solid rgba(244,191,55,.28);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  animation:orbitSpin linear infinite;
+}
+.orbit-one{width:210px;height:210px;animation-duration:16s}
+.orbit-two{width:320px;height:320px;animation-duration:24s;animation-direction:reverse;border-color:rgba(255,213,74,.35)}
+.orbit-three{width:430px;height:430px;animation-duration:36s}
+.orbit-four{
+  width:520px;height:520px;
+  animation-duration:48s;
+  animation-direction:reverse;
+  border-color:rgba(244,191,55,.15);
+  border-style:dashed;
+}
+
+.satellite{
+  position:absolute;left:50%;top:-22px;
+  transform:translateX(-50%);
+  width:46px;height:46px;
+  display:grid;place-items:center;
+  border-radius:15px;
+  background:linear-gradient(145deg,#2a220c,#0e0b04);
+  border:1px solid rgba(255,200,50,.60);
+  box-shadow:0 0 22px rgba(244,191,55,.30);
+  font-size:20px;
+  animation:counterSpin linear infinite;
+}
+.orbit-one .satellite{animation-duration:16s}
+.orbit-two .satellite{animation-duration:24s;animation-direction:reverse;border-color:rgba(255,213,74,.70)}
+.orbit-three .satellite{animation-duration:36s}
+.orbit-four .satellite{animation-duration:48s;animation-direction:reverse}
+
+.satellite.gold{border-color:rgba(255,213,74,.75);box-shadow:0 0 22px rgba(255,200,50,.25)}
+
+.orbit-two .satellite{left:50%;top:auto;bottom:-21px}
+.orbit-three .satellite{left:auto;right:30px;top:50%;transform:translate(50%,-50%);animation-name:counterSpinSide}
+.orbit-four .satellite{left:30px;top:50%;transform:translate(-50%,-50%);animation-name:counterSpinSide}
+
+.orbit-label{
+  position:absolute;
+  font-size:9px;letter-spacing:1.2px;
+  color:rgba(255,213,74,.55);
+  text-transform:uppercase;
+  z-index:2;
+}
+.label-a{top:15%;left:8%}
+.label-b{top:18%;right:6%;color:#ffd54a}
+.label-c{bottom:20%;left:7%}
+.label-d{bottom:22%;right:6%}
+.label-e{top:48%;left:3%;color:#ffe082}
+
+.spark{
+  position:absolute;width:4px;height:4px;
+  background:var(--gold2);border-radius:50%;
+  box-shadow:0 0 14px var(--gold);
+  animation:sparkle 2.5s ease-in-out infinite;
+  z-index:2;
+}
+.s1{left:18%;top:32%}.s2{right:20%;top:28%;animation-delay:.7s}
+.s3{left:27%;bottom:26%;animation-delay:1.2s}.s4{right:15%;bottom:32%;animation-delay:1.7s}
+.s5{left:45%;top:12%;animation-delay:.4s}.s6{right:42%;bottom:14%;animation-delay:2s}
+.s7{left:8%;top:50%;animation-delay:.9s}.s8{right:10%;top:48%;animation-delay:1.5s}
+.s9{left:38%;bottom:18%;animation-delay:2.3s}.s10{right:35%;top:20%;animation-delay:0.3s}
+.spark{width:5px;height:5px}
+
+/* TICKER */
+.ticker{
+  overflow:hidden;
+  border-top:1px solid rgba(244,191,55,.12);
+  border-bottom:1px solid rgba(244,191,55,.12);
+  background:#080603;
+}
+.ticker-track{
+  display:flex;gap:25px;white-space:nowrap;
+  padding:13px 0;min-width:max-content;
+  animation:marquee 25s linear infinite;
+  color:#9a8c70;font-size:10px;letter-spacing:1.6px;
+}
+.ticker-track span:nth-of-type(3n+1){color:#ffd54a}
+.ticker-track b{color:#e8b020}
+
+/* SECTIONS */
+section{padding:85px 0}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-family:Orbitron;font-size:clamp(25px,4vw,40px);margin-bottom:12px}
+.section-title p{color:var(--muted);max-width:650px;margin:auto;line-height:1.7}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.stat,.card{
+  background:linear-gradient(145deg,rgba(24,18,8,.92),rgba(10,8,4,.96));
+  border:1px solid var(--line);
+  border-radius:18px;padding:24px;
+  box-shadow:var(--shadow);transition:.25s;
+}
+.stat:hover,.card:hover{border-color:rgba(244,191,55,.45);transform:translateY(-3px)}
+.stat b{display:block;font-family:Orbitron;font-size:25px;color:var(--gold2);margin-bottom:8px}
+.stat span{color:var(--muted);font-size:12px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card .icon{
+  width:45px;height:45px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(244,191,55,.12);
+  border:1px solid rgba(244,191,55,.28);
+  font-size:21px;margin-bottom:18px;
+}
+.card h3{font-family:Orbitron;font-size:17px;margin-bottom:10px}
+.card p{color:var(--muted);line-height:1.7;font-size:13px}
+
+/* MARKET */
+.market-grid{display:grid;grid-template-columns:1.3fr .85fr .85fr;gap:16px}
+.market-card{
+  min-height:205px;padding:23px;
+  border:1px solid var(--line);border-radius:20px;
+  background:linear-gradient(145deg,rgba(22,16,6,.96),rgba(8,6,3,.98));
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.market-head{display:flex;justify-content:space-between;align-items:center;color:#9a8c70;font-size:10px;letter-spacing:1.2px}
+.up{color:#ffd54a}
+.market-value{font-family:Orbitron;font-size:29px;margin:20px 0 14px}
+.market-value small{font-family:Inter;font-size:11px;color:#9a8c70}
+.chart{height:52px;display:flex;align-items:end;gap:6px}
+.chart i{display:block;flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(to top,#a67c00,#ffd54a);opacity:.9;transition:height .4s}
+.chart i:nth-child(1){height:24%}.chart i:nth-child(2){height:35%}.chart i:nth-child(3){height:29%}
+.chart i:nth-child(4){height:44%}.chart i:nth-child(5){height:38%}.chart i:nth-child(6){height:55%}
+.chart i:nth-child(7){height:47%}.chart i:nth-child(8){height:68%}.chart i:nth-child(9){height:61%}
+.chart i:nth-child(10){height:78%}.chart i:nth-child(11){height:70%}.chart i:nth-child(12){height:91%}
+.market-foot{display:flex;justify-content:space-between;color:#8a7e68;font-size:11px;margin-top:16px}
+.market-foot strong{color:#f0e6c8}
+.big-number{font-family:Orbitron;font-size:39px;margin:22px 0 7px}
+.market-card p{color:#9a8c70;font-size:12px;line-height:1.6}
+
+/* DASHBOARD */
+.dashboard{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.dashboard-main,.wallet{
+  border:1px solid var(--line);border-radius:22px;padding:28px;
+  background:linear-gradient(145deg,#120e06,#080603);
+}
+.balance{font-family:Orbitron;font-size:42px;color:var(--gold2);margin:15px 0 7px}
+.muted{color:var(--muted)}
+.meter{height:9px;background:#1a1508;border-radius:20px;overflow:hidden;margin:20px 0}
+.meter div{width:0;height:100%;background:linear-gradient(90deg,#c99010,var(--gold2));border-radius:20px;transition:width .5s}
+.rows{display:grid;gap:12px}
+.row{display:flex;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);color:#d4c9b0;font-size:13px}
+.row strong{color:white;text-align:right}
+.wallet h3{font-family:Orbitron;margin-bottom:9px}
+.wallet p{line-height:1.65;font-size:13px}
+.wallet button{width:100%;margin-top:18px}
+.wallet-logo{
+  width:70px;height:70px;border-radius:50%;
+  display:grid;place-items:center;
+  background:radial-gradient(circle,#5a4010,#0a0804);
+  border:1px solid var(--gold2);font-size:34px;margin-bottom:18px;
+}
+.network-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;padding:5px 10px;border-radius:20px;
+  background:rgba(244,191,55,.12);border:1px solid rgba(244,191,55,.30);
+  color:var(--gold2);margin-top:10px;
+}
+.web3-panel{margin-top:22px;padding:18px;border-radius:16px;background:rgba(0,0,0,.40);border:1px solid rgba(244,191,55,.18)}
+.web3-panel h4{font-family:Orbitron;font-size:13px;margin-bottom:12px;color:var(--gold2)}
+.input-group label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.input-group input{
+  width:100%;padding:12px;border-radius:10px;
+  border:1px solid rgba(244,191,55,.30);background:#120e06;color:white;
+}
+.danger-btn{
+  background:linear-gradient(135deg,#ff5c5c,#c0392b);
+  border:0;color:white;font-weight:700;
+  padding:12px 18px;border-radius:12px;width:100%;margin-top:12px;
+}
+.tx-status{margin-top:14px;padding:12px;border-radius:10px;font-size:12px;background:rgba(22,214,107,.08);border:1px solid rgba(57,255,136,.2);display:none;overflow-wrap:anywhere}
+.tx-status.show{display:block}
+.tx-status.error{background:rgba(255,92,92,.1);border-color:rgba(255,92,92,.3);color:#ff8a8a}
+
+/* PROCESS */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;counter-reset:step}
+.step{padding:24px;border:1px solid var(--line);border-radius:18px;background:#0e0b05}
+.step:before{counter-increment:step;content:"0" counter(step);color:var(--gold2);font-family:Orbitron;font-size:12px}
+.step h3{margin:14px 0 8px}
+.step p{color:var(--muted);font-size:13px;line-height:1.6}
+
+/* CTA */
+.cta{
+  text-align:center;
+  border:1px solid rgba(244,191,55,.30);
+  border-radius:25px;padding:50px 25px;
+  background:radial-gradient(circle at center,rgba(244,191,55,.12),transparent 55%),#0e0b05;
+}
+.cta h2{font-family:Orbitron;font-size:clamp(25px,4vw,40px);margin-bottom:14px}
+.cta p{color:var(--muted);max-width:620px;margin:0 auto 25px;line-height:1.7}
+.contact-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:960px;
+  margin:28px auto 0;
+  text-align:center;
+}
+.contact-card{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:32px 22px;
+  background:linear-gradient(145deg,rgba(28,22,8,.96),rgba(12,10,4,.98));
+  border:1px solid rgba(244,191,55,.28);
+  border-radius:22px;
+  box-shadow:0 0 32px rgba(244,191,55,.10);
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  cursor:pointer;
+  color:inherit;font:inherit;text-decoration:none;
+  min-height:240px;
+  justify-content:center;
+}
+.contact-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(244,191,55,.55);
+  box-shadow:0 10px 40px rgba(244,191,55,.22);
+}
+.contact-icon{
+  width:68px;height:68px;border-radius:50%;
+  display:grid;place-items:center;
+  margin-bottom:4px;
+}
+.wa-icon-bg{
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  box-shadow:0 0 24px rgba(37,211,102,.5);
+}
+.email-icon-bg{
+  background:linear-gradient(145deg,#3d2e0a,#1a1406);
+  border:1px solid rgba(255,213,74,.4);
+  box-shadow:0 0 18px rgba(244,191,55,.2);
+}
+.web3-icon-bg{
+  background:linear-gradient(145deg,#3d2e0a,#1a1406);
+  border:1px solid rgba(255,213,74,.4);
+  box-shadow:0 0 18px rgba(244,191,55,.2);
+}
+.contact-card strong{
+  font-family:Orbitron,sans-serif;
+  font-size:15px;
+  color:#fff;
+  letter-spacing:.5px;
+}
+.contact-card span{
+  font-size:13px;
+  color:#d4c9b0;
+}
+.contact-card em{
+  font-style:normal;
+  font-size:11px;
+  color:#a89870;
+  margin-top:2px;
+}
+.wa-card:hover{border-color:rgba(37,211,102,.55);box-shadow:0 8px 36px rgba(37,211,102,.2)}
+@media(max-width:700px){
+  .contact-options{grid-template-columns:1fr;max-width:340px}
+}
+
+footer{border-top:1px solid var(--line);padding:30px 0;color:#9a8c70;font-size:12px}
+.footer-flex{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.gold{color:var(--gold2)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ANIMATIONS */
+@keyframes orbitSpin{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes counterSpin{from{transform:translateX(-50%) rotate(0)}to{transform:translateX(-50%) rotate(-360deg)}}
+@keyframes counterSpinSide{from{transform:translate(50%,-50%) rotate(0)}to{transform:translate(50%,-50%) rotate(-360deg)}}
+@keyframes corePulse{
+  0%,100%{box-shadow:0 0 28px rgba(255,200,50,.50),inset 0 0 22px rgba(0,0,0,.40);scale:1}
+  50%{box-shadow:0 0 48px rgba(255,213,74,.80),inset 0 0 22px rgba(0,0,0,.40);scale:1.04}
+}
+@keyframes sparkle{
+  0%,100%{opacity:.15;transform:scale(.6)}
+  50%{opacity:1;transform:scale(1.6)}
+}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .links{display:none}
+  .hero-grid,.dashboard{grid-template-columns:1fr}
+  .hero-grid{gap:28px}
+  .orbit-card{min-height:490px;border:none;background:transparent;box-shadow:none}
+  .stats,.process{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:1fr 1fr}
+  .market-grid{grid-template-columns:1fr 1fr}
+  .market-card.featured{grid-column:1/-1}
+}
+@media(max-width:600px){
+  .topline span:last-child{display:none}
+  header{top:0}.topline{display:none}
+  nav{min-height:68px}
+  .brand-mark{width:39px;height:39px}
+  .brand span{font-size:11px}
+  .brand small{font-size:7px}
+  .nav-btn{padding:9px 10px;font-size:11px}
+  .hero{padding-top:105px}
+  .hero-copy p{font-size:14px}
+  .orbit-card{min-height:420px;border:none;background:transparent;box-shadow:none;overflow:visible}
+  .orbit-one{width:160px;height:160px}
+  .orbit-two{width:245px;height:245px}
+  .orbit-three{width:325px;height:325px}
+  .orbit-four{width:390px;height:390px}
+  .core{width:88px;height:88px;font-size:38px}
+  .core:after{top:98px;font-size:8px}
+  .satellite{width:37px;height:37px;font-size:17px;top:-18px}
+  .orbit-two .satellite{bottom:-18px}
+  .orbit-three .satellite{right:22px}
+  .orbit-label{font-size:7px}
+  .label-a{left:7%}.label-b{right:6%}.label-c{left:6%}.label-d{right:6%}
+  .orbit-caption{left:14px;right:14px;bottom:13px}
+  .orbit-caption strong{font-size:10px}
+  .orbit-caption small{font-size:9px}
+  .stats,.cards,.process,.market-grid{grid-template-columns:1fr}
+  .market-card.featured{grid-column:auto}
+  section{padding:65px 0}
+  .balance{font-size:31px}
+  .dashboard-main,.wallet{padding:21px}
+  .ticker-track{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+
+.logo-img{
+  width:100%;height:100%;object-fit:contain;
+  border-radius:50%;
+}
+.brand-mark{
+  overflow:hidden;
+  padding:2px;
+  background:radial-gradient(circle,#1a1406,#0a0804) !important;
+}
+.core{
+  overflow:hidden;
+  font-size:0 !important;
+  background:transparent !important;
+  border:1px solid rgba(255,220,120,.5) !important;
+  box-shadow:0 0 30px rgba(255,200,50,.45),0 0 60px rgba(34,180,80,.25) !important;
+}
+.core-logo{
+  width:88%;height:88%;object-fit:contain;
+  border-radius:50%;
+}
+.core:after{top:128px !important}
+.wallet-logo{
+  overflow:hidden;
+  font-size:0 !important;
+  background:transparent !important;
+  padding:2px;
+}
+.wallet-logo-img{
+  width:100%;height:100%;object-fit:contain;
+  border-radius:50%;
+}
+.icon-logo{
+  width:28px;height:28px;object-fit:contain;
+  border-radius:50%;
+}
+.icon{
+  overflow:hidden;
+}
+
+</style>
+</head>
+<body>
+<canvas id="globalParticles" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+<div class="topline"><div class="container"><span>● REDE CARBON CREDIT NEX ONLINE</span><span>BLOCKCHAIN • GREEN ASSETS • CARBON MARKET</span></div></div>
+<header>
+  <div class="container">
+    <nav>
+      <a href="#inicio" class="brand">
+        <div class="brand-mark" aria-hidden="true"><img src="logo-carbon-nex.png" alt="Carbon Credit Nex" class="logo-img"></div>
+        <div><span>CARBON CREDIT NEX</span><small>GREEN ASSETS • BLOCKCHAIN</small></div>
+      </a>
+      <div class="links">
+        <a href="#creditos">Mercado</a>
+        <a href="#tecnologia">Tecnologia</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#processo">Processo</a>
+      </div>
+      <button class="nav-btn" id="navConnectBtn" onclick="connectWallet()">🦊 Conectar MetaMask</button>
+    </nav>
+  </div>
+</header>
+
+<main style="position:relative;z-index:1">
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow"><i class="dot"></i> Ativos ambientais na blockchain</div>
+      <h1>O futuro do <span>crédito de carbono</span> é digital.</h1>
+      <p>Conectamos sustentabilidade, ativos ambientais e tecnologia blockchain para criar uma experiência transparente, rastreável e preparada para a nova economia verde.</p>
+      <div class="actions">
+        <a class="primary" href="#creditos">Explorar créditos</a>
+        <a class="secondary" href="#dashboard">Ver dashboard</a>
+      </div>
+      <div class="trust-row">
+        <span>✓ Rastreabilidade</span>
+        <span>✓ Transparência</span>
+        <span>✓ Infraestrutura Web3</span>
+      </div>
+    </div>
+
+    <!-- GRÁFICO BLOCKCHAIN MELHORADO -->
+    <div class="orbit-card" aria-label="Visualização animada de ativos ambientais e blockchain">
+      <canvas id="blockchainCanvas"></canvas>
+      <div class="orbit-scene">
+        <span class="orbit-label label-a">Carbono</span>
+        <span class="orbit-label label-b">Blockchain</span>
+        <span class="orbit-label label-c">Energia limpa</span>
+        <span class="orbit-label label-d">Web3</span>
+        <span class="orbit-label label-e">Nodos</span>
+        <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i>
+        <i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i>
+        <i class="spark s7"></i><i class="spark s8"></i><i class="spark s9"></i>
+        <i class="spark s10"></i>
+
+        <div class="orbit orbit-four"><span class="satellite" aria-label="Nodo">⬡</span></div>
+        <div class="orbit orbit-three"><span class="satellite gold" aria-label="Mercado global">🌎</span></div>
+        <div class="orbit orbit-two"><span class="satellite" aria-label="Blockchain">🔗</span></div>
+        <div class="orbit orbit-one"><span class="satellite gold" aria-label="Crédito de carbono">♻️</span></div>
+        <div class="core" aria-label="Carbon Credit Nex"><img src="logo-carbon-nex.png" alt="Carbon Nex" class="core-logo"></div>
+      </div>
+      <div class="orbit-caption">
+        <div><strong>GREEN ASSETS • WEB3</strong><small>Ativos ambientais em movimento</small></div>
+        <span class="live">● VISUAL LIVE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>◆ CRÉDITO DE CARBONO</span><b>•</b>
+    <span>🔗 BLOCKCHAIN</span><b>•</b>
+    <span>🌎 IMPACTO AMBIENTAL</span><b>•</b>
+    <span>⚡ WEB3</span><b>•</b>
+    <span>⬡ NODOS ATIVOS</span><b>•</b>
+    <span>◆ CRÉDITO DE CARBONO</span><b>•</b>
+    <span>🔗 BLOCKCHAIN</span><b>•</b>
+    <span>🌎 IMPACTO AMBIENTAL</span><b>•</b>
+    <span>⚡ WEB3</span><b>•</b>
+    <span>⬡ NODOS ATIVOS</span>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><b>1 tCO₂e</b><span>Unidade de referência de crédito de carbono</span></div>
+      <div class="stat"><b>100%</b><span>Rastreabilidade digital proposta</span></div>
+      <div class="stat"><b>24/7</b><span>Consulta de ativos e registros</span></div>
+      <div class="stat"><b>Web3</b><span>Infraestrutura preparada para blockchain</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="creditos">
+  <div class="container">
+    <div class="section-title">
+      <h2>3 Opções de Valor</h2>
+      <p>Ativo, rastreio e impacto — tudo em uma camada digital para créditos de carbono.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="icon"><img src="logo-carbon-nex.png" alt="" class="icon-logo"></div>
+        <h3>1 · Ativo Ambiental</h3>
+        <p>Organize créditos de carbono e informações do projeto em uma interface digital clara.</p>
+      </article>
+      <article class="card">
+        <div class="icon">🔗</div>
+        <h3>2 · Rastreabilidade</h3>
+        <p>Associe registros, identificadores e dados de blockchain para facilitar a verificação.</p>
+      </article>
+      <article class="card">
+        <div class="icon">🌎</div>
+        <h3>3 · Impacto Climático</h3>
+        <p>Apresente o impacto ambiental de forma visual, permitindo acompanhar métricas de CO₂e.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="market-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Mercado Ambiental</h2>
+      <p>Indicadores demonstrativos para uma experiência de mercado digital mais completa.</p>
+    </div>
+    <div class="market-grid">
+      <div class="market-card featured">
+        <div class="market-head"><span>CARBON NEX INDEX · DEMO</span><span class="up" id="indexChange">▲ 4,82%</span></div>
+        <div class="market-value" id="indexPrice">US$ 28,40 <small>/ tCO₂e</small></div>
+        <div class="chart" id="liveChart">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="market-foot"><span>Volume ilustrativo 24h</span><strong id="volumeValue">184.920 tCO₂e</strong></div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><span>PROJETOS ATIVOS</span><span class="gold">DEMO</span></div>
+        <div class="big-number" id="projectsCount">18</div>
+        <p>Projetos ambientais acompanhados na interface demonstrativa.</p>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><span>IMPACTO REGISTRADO</span><span class="up">DEMO</span></div>
+        <div class="big-number" id="impactValue">12.840</div>
+        <p>tCO₂e ilustrativos. Não representam créditos verificados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="container">
+    <div class="section-title">
+      <h2>Carbon Dashboard</h2>
+      <p>Conecte uma carteira para consultar dados do contrato configurado. Sem contrato, a interface permanece em modo demonstrativo.</p>
+    </div>
+    <div class="dashboard">
+      <div class="dashboard-main">
+        <span class="muted">Saldo ambiental on-chain</span>
+        <div class="balance" id="tokenBalance">— tCO₂e</div>
+        <span class="muted">Créditos registrados na carteira</span>
+        <div class="meter"><div id="balanceMeter"></div></div>
+        <div class="rows">
+          <div class="row"><span>Saldo do token</span><strong id="availableCredits">—</strong></div>
+          <div class="row"><span>Créditos aposentados</span><strong id="retiredCredits">—</strong></div>
+          <div class="row"><span>Projetos vinculados</span><strong>18 · demo</strong></div>
+          <div class="row"><span>Status da rede</span><strong class="gold" id="networkStatus">Aguardando conexão</strong></div>
+        </div>
+        <div class="web3-panel" id="actionsPanel" style="display:none">
+          <h4>Ações de Crédito de Carbono</h4>
+          <div class="input-group">
+            <label for="retireAmount">Quantidade para aposentar (unidades inteiras)</label>
+            <input type="number" id="retireAmount" placeholder="Ex.: 10" min="1" step="1">
+          </div>
+          <button class="danger-btn" onclick="retireCredits()">🔥 Aposentar Créditos</button>
+          <div class="tx-status" id="txStatus" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+      <aside class="wallet">
+        <div class="wallet-logo" aria-hidden="true"><img src="logo-carbon-nex.png" alt="Carbon Nex" class="wallet-logo-img"></div>
+        <h3>Minha Wallet</h3>
+        <p class="muted">Conecte sua carteira MetaMask (ou outra carteira Web3) para consultar os dados do contrato de token configurado.</p>
+        <button class="primary" id="walletConnectBtn" onclick="connectWallet()">🦊 Conectar MetaMask</button>
+        <p id="walletStatus" class="muted" style="margin-top:14px;font-size:12px">Carteira não conectada.</p>
+        <div class="network-badge" id="networkBadge" style="display:none">
+          <span>●</span><span id="networkName">—</span>
+        </div>
+        <div class="web3-panel" id="walletInfo" style="display:none;margin-top:18px">
+          <div class="row"><span>Endereço</span><strong id="walletAddressShort">—</strong></div>
+          <div class="row"><span>Saldo Token</span><strong id="walletTokenBalance">—</strong></div>
+          <div class="row"><span>Rede</span><strong id="walletNetwork">—</strong></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="tecnologia">
+  <div class="container">
+    <div class="section-title">
+      <h2>Como funciona</h2>
+      <p>Fluxo visual preparado para integração com contratos inteligentes e provedores de dados.</p>
+    </div>
+    <div class="process" id="processo">
+      <div class="step"><h3>Projeto</h3><p>Cadastro do projeto ambiental e seus dados de referência.</p></div>
+      <div class="step"><h3>Verificação</h3><p>Dados e documentos passam pelo processo de validação definido pela operação.</p></div>
+      <div class="step"><h3>Tokenização</h3><p>O ativo é representado digitalmente conforme o modelo jurídico e técnico adotado.</p></div>
+      <div class="step"><h3>Rastreio</h3><p>O registro pode ser consultado por identificador, carteira ou transação.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container">
+    <div class="cta">
+      <h2>Construa a próxima geração de ativos verdes.</h2>
+      <p>Escolha uma das 3 opções para começar:</p>
+      <div class="contact-options">
+        <!-- Opção 1: WhatsApp -->
+        <a href="https://wa.me/5511916534508?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Carbon%20Credit%20Nex." target="_blank" rel="noopener" class="contact-card wa-card">
+          <div class="contact-icon wa-icon-bg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#ffffff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <strong>1 · WhatsApp</strong>
+          <span>+55 11 91653-4508</span>
+          <em>Fale agora com a equipe</em>
+        </a>
+        <!-- Opção 2: E-mail -->
+        <a href="mailto:contato@carboncreditnex.com" class="contact-card email-card">
+          <div class="contact-icon email-icon-bg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#ffd54a" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <strong>2 · E-mail</strong>
+          <span>contato@carboncreditnex.com</span>
+          <em>Envie sua proposta</em>
+        </a>
+        <!-- Opção 3: MetaMask / Web3 -->
+        <button type="button" class="contact-card web3-card" onclick="connectWallet(); document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">
+          <div class="contact-icon web3-icon-bg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#ffd54a" aria-hidden="true"><path d="M21.49 6.11l-1.2-2.1a1 1 0 00-1.37-.37L12 7.5 5.08 3.64a1 1 0 00-1.37.37l-1.2 2.1A1 1 0 002.7 7.5L12 13l9.3-5.5a1 1 0 00.19-1.39zM3 9.5V18a2 2 0 002 2h14a2 2 0 002-2V9.5l-8.3 4.9a1 1 0 01-1 0L3 9.5z"/></svg>
+          </div>
+          <strong>3 · Wallet</strong>
+          <span>MetaMask / Web3</span>
+          <em>Conecte e veja seus créditos</em>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="position:relative;z-index:1">
+  <div class="container footer-flex">
+    <span>© 2026 Carbon Credit Nex</span>
+    <span>Crédito de Carbono <span class="gold">•</span> Blockchain <span class="gold">•</span> Green Assets</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script>
+/* CONFIGURE o endereço do contrato real antes de usar ações on-chain.
+   Endereço zero mantém o site em modo demonstrativo e bloqueia transações. */
+const CONTRACTS = { carbonToken: "0x0000000000000000000000000000000000000000" };
+const NETWORK = {
+  chainId: "0xaa36a7",
+  chainName: "Sepolia Testnet",
+  rpcUrls: ["https://rpc.sepolia.org"],
+  nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
+  blockExplorerUrls: ["https://sepolia.etherscan.io"]
+};
+const ABI = [
+  "function balanceOf(address owner) view returns (uint256)",
+  "function decimals() view returns (uint8)",
+  "function symbol() view returns (string)",
+  "function totalRetired() view returns (uint256)",
+  "function retire(uint256 amount)"
+];
+
+let currentAccount = null, provider = null, signer = null, tokenContract = null;
+const $ = id => document.getElementById(id);
+function shortAddress(a){ return a.slice(0,6)+"..."+a.slice(-4); }
+
+async function connectWallet(){
+  const status = $("walletStatus");
+  const eth = window.ethereum;
+  if(!eth){
+    status.innerHTML = 'MetaMask não detectada.<br><a href="https://metamask.io/download/" target="_blank" rel="noopener" style="color:#ffd54a;text-decoration:underline">Baixar MetaMask</a>';
+    status.style.color = "#ff8a8a";
+    return;
+  }
+  // Prefer MetaMask provider when multiple wallets are installed
+  const providerSource = eth.providers
+    ? (eth.providers.find(p => p.isMetaMask) || eth.providers[0])
+    : eth;
+  try{
+    status.textContent = "Solicitando conexão…";
+    status.style.color = "#c6d5cc";
+    const accounts = await providerSource.request({ method: "eth_requestAccounts" });
+    if(!accounts || !accounts.length){
+      status.textContent = "Nenhuma conta autorizada.";
+      status.style.color = "#ff8a8a";
+      return;
+    }
+    currentAccount = accounts[0];
+    let chain = await providerSource.request({ method: "eth_chainId" });
+    if(String(chain).toLowerCase() !== NETWORK.chainId){
+      try{
+        await providerSource.request({ method: "wallet_switchEthereumChain", params: [{ chainId: NETWORK.chainId }] });
+      }catch(switchErr){
+        if(switchErr.code === 4902 || (switchErr.data && switchErr.data.originalError && switchErr.data.originalError.code === 4902)){
+          await providerSource.request({ method: "wallet_addEthereumChain", params: [NETWORK] });
+        } else if(switchErr.code === 4001){
+          status.textContent = "Troca de rede rejeitada. Selecione Sepolia na MetaMask.";
+          status.style.color = "#ff8a8a";
+          return;
+        } else {
+          throw switchErr;
+        }
+      }
+    }
+    provider = new ethers.providers.Web3Provider(providerSource);
+    signer = provider.getSigner();
+    $("navConnectBtn").textContent = "🦊 " + shortAddress(currentAccount);
+    $("walletConnectBtn").textContent = "✓ MetaMask conectada";
+    status.textContent = "Conectada: " + shortAddress(currentAccount);
+    status.style.color = "#ffd54a";
+    $("walletAddressShort").textContent = shortAddress(currentAccount);
+    $("networkName").textContent = NETWORK.chainName;
+    $("walletNetwork").textContent = NETWORK.chainName;
+    $("networkStatus").textContent = "Conectada · Sepolia";
+    $("walletInfo").style.display = "block";
+    $("networkBadge").style.display = "inline-flex";
+    $("actionsPanel").style.display = "block";
+    await loadTokenBalance();
+  }catch(e){
+    console.error(e);
+    let msg = "Não foi possível conectar.";
+    if(e.code === 4001) msg = "Conexão rejeitada pelo usuário.";
+    else if(e.code === -32002) msg = "Já existe uma solicitação pendente na MetaMask. Abra a extensão e confirme.";
+    else if(e.message) msg = e.message;
+    status.textContent = msg;
+    status.style.color = "#ff8a8a";
+  }
+}
+
+async function loadTokenBalance(){
+  if(!currentAccount) return;
+  if(CONTRACTS.carbonToken === "0x0000000000000000000000000000000000000000"){
+    $("tokenBalance").textContent = "Não configurado";
+    $("availableCredits").textContent = "—";
+    $("retiredCredits").textContent = "—";
+    $("walletTokenBalance").textContent = "—";
+    $("balanceMeter").style.width = "0%";
+    $("networkStatus").textContent = "Modo demonstrativo";
+    return;
+  }
+  try{
+    tokenContract = new ethers.Contract(CONTRACTS.carbonToken, ABI, signer);
+    const [raw, dec] = await Promise.all([
+      tokenContract.balanceOf(currentAccount),
+      tokenContract.decimals()
+    ]);
+    const balance = Number(ethers.utils.formatUnits(raw, dec));
+    $("tokenBalance").textContent = balance.toLocaleString("pt-BR") + " tokens";
+    $("availableCredits").textContent = balance.toLocaleString("pt-BR");
+    $("walletTokenBalance").textContent = balance.toLocaleString("pt-BR");
+    $("balanceMeter").style.width = Math.min(100, balance / 200).toFixed(1) + "%";
+    try{
+      const retired = await tokenContract.totalRetired();
+      $("retiredCredits").textContent = Number(ethers.utils.formatUnits(retired, dec)).toLocaleString("pt-BR");
+    }catch(e){
+      $("retiredCredits").textContent = "Função indisponível";
+    }
+  }catch(e){
+    console.error(e);
+    $("tokenBalance").textContent = "Erro na consulta";
+    $("networkStatus").textContent = "Verifique contrato/rede";
+  }
+}
+
+async function retireCredits(){
+  const amount = Number($("retireAmount").value);
+  const status = $("txStatus");
+  status.className = "tx-status show";
+  if(!currentAccount){
+    status.classList.add("error");
+    status.textContent = "Conecte sua carteira primeiro.";
+    return;
+  }
+  if(!Number.isInteger(amount) || amount <= 0){
+    status.classList.add("error");
+    status.textContent = "Digite uma quantidade inteira maior que zero.";
+    return;
+  }
+  if(CONTRACTS.carbonToken === "0x0000000000000000000000000000000000000000" || !tokenContract){
+    status.classList.add("error");
+    status.textContent = "Modo demonstrativo: configure e valide o endereço e a ABI de um contrato real antes de enviar transações.";
+    return;
+  }
+  try{
+    status.textContent = "Confirme a transação no MetaMask…";
+    const decimals = await tokenContract.decimals();
+    const tx = await tokenContract.retire(ethers.utils.parseUnits(String(amount), decimals));
+    status.textContent = "Transação enviada. Aguardando confirmação…";
+    await tx.wait();
+    status.className = "tx-status show";
+    status.textContent = "Transação confirmada: " + tx.hash;
+    $("retireAmount").value = "";
+    await loadTokenBalance();
+  }catch(e){
+    console.error(e);
+    status.className = "tx-status show error";
+    status.textContent = "Transação não concluída: " + (e.reason || e.message || "erro desconhecido");
+  }
+}
+
+/* ========== PARTÍCULAS DOURADAS — Orbit Card ========== */
+function initBlockchainParticles(){
+  const canvas = document.getElementById("blockchainCanvas");
+  if(!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let w, h, particles = [];
+
+  function resize(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = rect.width * (window.devicePixelRatio || 1);
+    h = canvas.height = rect.height * (window.devicePixelRatio || 1);
+    canvas.style.width = rect.width + "px";
+    canvas.style.height = rect.height + "px";
+    ctx.setTransform(window.devicePixelRatio || 1, 0, 0, window.devicePixelRatio || 1, 0, 0);
+    w = rect.width; h = rect.height;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const COUNT = 42;
+  for(let i = 0; i < COUNT; i++){
+    const isBright = Math.random() > 0.55;
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.55,
+      vy: (Math.random() - 0.5) * 0.55,
+      r: Math.random() * 2.8 + 0.8,
+      baseAlpha: isBright ? 0.9 : 0.45,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.02 + Math.random() * 0.03,
+      color: isBright ? [255, 213, 74] : [232, 176, 32]
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    // conexões douradas
+    for(let i = 0; i < particles.length; i++){
+      for(let j = i + 1; j < particles.length; j++){
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < 120){
+          const alpha = 0.28 * (1 - dist/120);
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(255,200,50,${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    // partículas com pulse
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.pulse += p.pulseSpeed;
+      if(p.x < -10) p.x = w + 10;
+      if(p.x > w + 10) p.x = -10;
+      if(p.y < -10) p.y = h + 10;
+      if(p.y > h + 10) p.y = -10;
+      const alpha = p.baseAlpha * (0.65 + 0.35 * Math.sin(p.pulse));
+      const r = p.r * (0.85 + 0.2 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${alpha})`;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},0.7)`;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ========== PARTÍCULAS DOURADAS GLOBAIS (fundo da página) ========== */
+function initGlobalParticles(){
+  const canvas = document.getElementById("globalParticles");
+  if(!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let w, h, particles = [];
+
+  function resize(){
+    w = canvas.width = window.innerWidth * (window.devicePixelRatio || 1);
+    h = canvas.height = window.innerHeight * (window.devicePixelRatio || 1);
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(window.devicePixelRatio || 1, 0, 0, window.devicePixelRatio || 1, 0, 0);
+    w = window.innerWidth; h = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const COUNT = 55;
+  for(let i = 0; i < COUNT; i++){
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: -0.15 - Math.random() * 0.35,
+      r: Math.random() * 1.8 + 0.4,
+      alpha: 0.15 + Math.random() * 0.35,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.015 + Math.random() * 0.025,
+      drift: (Math.random() - 0.5) * 0.08
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.x += p.vx + p.drift;
+      p.y += p.vy;
+      p.pulse += p.pulseSpeed;
+      if(p.y < -15){ p.y = h + 15; p.x = Math.random() * w; }
+      if(p.x < -15) p.x = w + 15;
+      if(p.x > w + 15) p.x = -15;
+      const a = p.alpha * (0.5 + 0.5 * Math.sin(p.pulse));
+      const r = p.r * (0.8 + 0.25 * Math.sin(p.pulse * 1.3));
+      // glow
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,200,50,${a * 0.15})`;
+      ctx.fill();
+      // core
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,220,100,${a})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = "rgba(255,200,50,0.6)";
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ========== MERCADO LIVE DEMO ========== */
+function animateMarket(){
+  const bars = document.querySelectorAll("#liveChart i");
+  let price = 28.40;
+  setInterval(() => {
+    bars.forEach(bar => {
+      const h = 20 + Math.random() * 75;
+      bar.style.height = h + "%";
+    });
+    const delta = (Math.random() - 0.48) * 0.35;
+    price = Math.max(22, Math.min(36, price + delta));
+    const change = ((price - 28.40) / 28.40 * 100).toFixed(2);
+    $("indexPrice").innerHTML = `US$ ${price.toFixed(2)} <small>/ tCO₂e</small>`;
+    const el = $("indexChange");
+    if(change >= 0){
+      el.textContent = `▲ ${change}%`;
+      el.className = "up";
+    }else{
+      el.textContent = `▼ ${Math.abs(change)}%`;
+      el.style.color = "#ff8a8a";
+    }
+    $("volumeValue").textContent = (180000 + Math.floor(Math.random()*12000)).toLocaleString("pt-BR") + " tCO₂e";
+  }, 3200);
+}
+
+window.addEventListener("DOMContentLoaded", async () => {
+  initBlockchainParticles();
+  initGlobalParticles();
+  animateMarket();
+
+  if(window.ethereum){
+    const eth = window.ethereum;
+    const src = eth.providers ? (eth.providers.find(p => p.isMetaMask) || eth.providers[0]) : eth;
+    if(src && src.on){
+      src.on("accountsChanged", accounts => {
+        if(!accounts || !accounts.length){ currentAccount = null; location.reload(); }
+        else { currentAccount = accounts[0]; location.reload(); }
+      });
+      src.on("chainChanged", () => location.reload());
+    }
+  }
+
+  const items = document.querySelectorAll(".section-title,.stat,.card,.market-card,.step,.dashboard-main,.wallet,.cta");
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(el => { el.classList.add("reveal"); observer.observe(el); });
+  }else{
+    items.forEach(el => el.classList.add("visible"));
+  }
+
+  if(window.ethereum){
+    try{
+      const eth = window.ethereum;
+      const src = eth.providers ? (eth.providers.find(p => p.isMetaMask) || eth.providers[0]) : eth;
+      const accounts = await src.request({ method: "eth_accounts" });
+      if(accounts && accounts.length){ currentAccount = accounts[0]; await connectWallet(); }
+    }catch(e){ console.warn("Auto-connect:", e); }
+  }
+});
+</script>
+</body>
+</html>
