@@ -569,11 +569,118 @@ body{overscroll-behavior-y:none;-webkit-font-smoothing:antialiased}
 }
 
 
-img{content-visibility:auto}
-section{content-visibility:auto;contain-intrinsic-size:auto 400px}
 .ticker{contain:layout paint}
 .orbit-one,.orbit-two,.orbit-three,.orbit-four{will-change:transform}
 .satellite{will-change:transform}
+
+
+/* CEO / Founder */
+.ceo-section{padding:90px 0}
+.ceo-grid{
+  display:grid;
+  grid-template-columns:0.95fr 1.15fr;
+  gap:42px;
+  align-items:center;
+}
+.ceo-photo-wrap{
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(244,191,55,.28);
+  background:#0a0804;
+  min-height:480px;
+}
+.ceo-photo-wrap img{
+  width:100%;
+  height:480px;
+  display:block;
+  object-fit:cover;
+  object-position:center 18%;
+}
+.ceo-photo-badge{
+  position:absolute;
+  left:16px;bottom:16px;
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(5,4,3,.88);
+  border:1px solid rgba(244,191,55,.35);
+  border-radius:999px;
+  padding:8px 14px;
+  font-size:11px;
+  letter-spacing:1px;
+  color:var(--gold2);
+  font-family:Orbitron,sans-serif;
+}
+.ceo-content .eyebrow{margin-bottom:14px}
+.ceo-content h2{
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(26px,3.5vw,38px);
+  margin-bottom:8px;
+  line-height:1.15;
+}
+.ceo-role{
+  color:var(--gold2);
+  font-size:14px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+  font-family:Orbitron,sans-serif;
+}
+.ceo-content p{
+  color:var(--muted);
+  line-height:1.75;
+  font-size:15px;
+  margin-bottom:14px;
+}
+.ceo-highlights{
+  display:grid;
+  gap:12px;
+  margin-top:22px;
+}
+.ceo-item{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding:14px 16px;
+  border:1px solid rgba(244,191,55,.18);
+  border-radius:14px;
+  background:linear-gradient(145deg,rgba(28,22,8,.7),rgba(10,8,4,.85));
+}
+.ceo-item .ceo-ico{
+  width:38px;height:38px;border-radius:10px;
+  display:grid;place-items:center;
+  background:rgba(244,191,55,.1);
+  border:1px solid rgba(244,191,55,.25);
+  flex-shrink:0;
+  font-size:18px;
+}
+.ceo-item strong{
+  display:block;
+  font-family:Orbitron,sans-serif;
+  font-size:13px;
+  color:#fff;
+  margin-bottom:3px;
+}
+.ceo-item span{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.ceo-quote{
+  margin-top:24px;
+  padding:18px 20px;
+  border-left:3px solid var(--gold);
+  background:rgba(244,191,55,.06);
+  border-radius:0 12px 12px 0;
+  font-style:italic;
+  color:#d4c9b0;
+  font-size:14px;
+  line-height:1.7;
+}
+@media(max-width:900px){
+  .ceo-grid{grid-template-columns:1fr;gap:28px}
+  .ceo-photo-wrap{min-height:360px}
+  .ceo-photo-wrap img{height:360px;object-position:center 15%}
+}
 
 </style>
 </head>
@@ -590,7 +697,7 @@ section{content-visibility:auto;contain-intrinsic-size:auto 400px}
         <a href="#creditos">Mercado</a>
         <a href="#tecnologia">Tecnologia</a>
         <a href="#dashboard">Dashboard</a>
-        <a href="#processo">Processo</a>
+        <a href="#processo">Processo</a><a href="#ceo">CEO</a>
       </div>
       <button class="nav-btn" id="navConnectBtn" onclick="connectWallet()">🦊 Conectar MetaMask</button>
     </nav>
@@ -779,6 +886,60 @@ section{content-visibility:auto;contain-intrinsic-size:auto 400px}
       <div class="step"><h3>Verificação</h3><p>Dados e documentos passam pelo processo de validação definido pela operação.</p></div>
       <div class="step"><h3>Tokenização</h3><p>O ativo é representado digitalmente conforme o modelo jurídico e técnico adotado.</p></div>
       <div class="step"><h3>Rastreio</h3><p>O registro pode ser consultado por identificador, carteira ou transação.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="ceo" class="ceo-section">
+  <div class="container">
+    <div class="ceo-grid">
+      <div class="ceo-photo-wrap">
+        <img src="ceo-floyd-menezes.jpg?v=3" alt="Floyd Menezes — CEO &amp; Founder Carbon Credit Nex">
+        <div class="ceo-photo-badge">● CEO · FOUNDER</div>
+      </div>
+      <div class="ceo-content">
+        <div class="eyebrow"><i class="dot"></i> Liderança · Visão · Blockchain</div>
+        <h2>Floyd Menezes</h2>
+        <div class="ceo-role">CEO &amp; Criador · Carbon Credito Coin (CCC)</div>
+        <p>
+          Visionário por trás do <strong style="color:#ffd54a">Carbon Credit Nex</strong> e da moeda
+          <strong style="color:#ffd54a">Carbon Credito Coin (CCC)</strong>, Floyd Menezes une estratégia de investimentos,
+          tecnologia blockchain e segurança cibernética para construir a próxima geração de ativos ambientais digitais.
+        </p>
+        <p>
+          Desenvolvedor de projetos e plataformas de investimento, lidera equipes especializadas em
+          <strong style="color:#fff">blindagem de segurança cibernética na Ethereum</strong>, protegendo infraestrutura,
+          contratos inteligentes e operações on-chain com rigor de nível institucional.
+        </p>
+        <div class="ceo-highlights">
+          <div class="ceo-item">
+            <div class="ceo-ico">◈</div>
+            <div>
+              <strong>Arquiteto de Plataformas</strong>
+              <span>Concepção e desenvolvimento de sistemas de investimento e tokenização de créditos de carbono.</span>
+            </div>
+          </div>
+          <div class="ceo-item">
+            <div class="ceo-ico">⬡</div>
+            <div>
+              <strong>Segurança Cibernética · Ethereum</strong>
+              <span>Liderança em blindagem de redes, auditoria de contratos e proteção de ativos digitais.</span>
+            </div>
+          </div>
+          <div class="ceo-item">
+            <div class="ceo-ico">◆</div>
+            <div>
+              <strong>Carbon Credito Coin (CCC)</strong>
+              <span>Diretor e criador do ecossistema que conecta impacto ambiental real à economia Web3.</span>
+            </div>
+          </div>
+        </div>
+        <div class="ceo-quote">
+          “O crédito de carbono só cumpre seu papel quando é rastreável, seguro e acessível.
+          A CCC nasce para transformar impacto ambiental em valor digital com transparência total.”
+        </div>
+      </div>
     </div>
   </div>
 </section>
