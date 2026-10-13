@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Carbon Credit Nex — Crédito de Carbono, Blockchain e Tecnologia Verde.">
-<title>Carbon Credit Nex | Crédito de Carbono</title>
+<title>Carbon Credit Nex | Em Breve</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -36,6 +35,92 @@ body{
 }
 a{text-decoration:none;color:inherit}
 button{font:inherit;cursor:pointer}
+
+/* ====== CAMADA DE DESFOQUE E MENSAGEM ====== */
+.blur-wrapper {
+  position: relative;
+}
+
+.blur-content {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.launch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 4, 3, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.launch-content {
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.launch-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle,#3d2e0a,#0a0804);
+  border: 2px solid rgba(255,213,74,.6);
+  box-shadow: 0 0 40px rgba(244,191,55,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+}
+
+.launch-logo img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.launch-title {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  color: var(--gold2);
+  text-shadow: 0 0 30px rgba(244,191,55,.4);
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+}
+
+.launch-subtitle {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 500px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.launch-line {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 2.5rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ====== FIM DA CAMADA DE EM BREVE ====== */
+
 .container{width:min(1180px,92%);margin:auto}
 
 /* TOPLINE */
@@ -123,7 +208,7 @@ h1 span{color:var(--gold2);text-shadow:0 0 30px rgba(244,191,55,.16)}
 .trust-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:23px;color:#9a8e78;font-size:11px}
 .trust-row span{padding:7px 0}
 
-/* ORBIT GRAPHIC — MELHORADO */
+/* ORBIT GRAPHIC */
 .orbit-card{
   position:relative;
   min-height:540px;
@@ -509,10 +594,13 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#9a8c70;font-size:1
   .balance{font-size:31px}
   .dashboard-main,.wallet{padding:21px}
   .ticker-track{font-size:9px}
+  .launch-title{font-size:2rem;letter-spacing:2px;}
+  .launch-subtitle{font-size:1rem;}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
   .reveal{opacity:1;transform:none}
+  .launch-content{animation:none;opacity:1;transform:none;}
 }
 
 .logo-img{
@@ -685,6 +773,23 @@ body{overscroll-behavior-y:none;-webkit-font-smoothing:antialiased}
 </style>
 </head>
 <body>
+
+<!-- ====== TELA DE EM BREVE ====== -->
+<div class="launch-overlay">
+  <div class="launch-content">
+    <div class="launch-logo">
+      <img src="logo-carbon-nex.png" alt="Carbon Credit Nex">
+    </div>
+    <h1 class="launch-title">EM BREVE</h1>
+    <div class="launch-line"></div>
+    <p class="launch-subtitle">Estamos preparando algo incrível para você.<br>O Carbon Credit Nex chegará em breve com uma nova experiência em créditos de carbono na blockchain.</p>
+  </div>
+</div>
+
+<!-- ====== CONTEÚDO DO SITE DESFOQUEADO ====== -->
+<div class="blur-wrapper">
+  <div class="blur-content">
+
 <div class="topline"><div class="container"><span>● REDE CARBON CREDIT NEX ONLINE</span><span>BLOCKCHAIN • GREEN ASSETS • CARBON MARKET</span></div></div>
 <header>
   <div class="container">
@@ -722,7 +827,6 @@ body{overscroll-behavior-y:none;-webkit-font-smoothing:antialiased}
       </div>
     </div>
 
-    <!-- GRÁFICO BLOCKCHAIN MELHORADO -->
     <div class="orbit-card" aria-label="Visualização animada de ativos ambientais e blockchain">
       <canvas id="blockchainCanvas"></canvas>
       <div class="orbit-scene">
@@ -809,490 +913,4 @@ body{overscroll-behavior-y:none;-webkit-font-smoothing:antialiased}
       <div class="market-card featured">
         <div class="market-head"><span>CARBON NEX INDEX · DEMO</span><span class="up" id="indexChange">▲ 4,82%</span></div>
         <div class="market-value" id="indexPrice">US$ 28,40 <small>/ tCO₂e</small></div>
-        <div class="chart" id="liveChart">
-          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-        </div>
-        <div class="market-foot"><span>Volume ilustrativo 24h</span><strong id="volumeValue">184.920 tCO₂e</strong></div>
-      </div>
-      <div class="market-card">
-        <div class="market-head"><span>PROJETOS ATIVOS</span><span class="gold">DEMO</span></div>
-        <div class="big-number" id="projectsCount">18</div>
-        <p>Projetos ambientais acompanhados na interface demonstrativa.</p>
-      </div>
-      <div class="market-card">
-        <div class="market-head"><span>IMPACTO REGISTRADO</span><span class="up">DEMO</span></div>
-        <div class="big-number" id="impactValue">12.840</div>
-        <p>tCO₂e ilustrativos. Não representam créditos verificados.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="dashboard">
-  <div class="container">
-    <div class="section-title">
-      <h2>Carbon Dashboard</h2>
-      <p>Conecte uma carteira para consultar dados do contrato configurado. Sem contrato, a interface permanece em modo demonstrativo.</p>
-    </div>
-    <div class="dashboard">
-      <div class="dashboard-main">
-        <span class="muted">Saldo ambiental on-chain</span>
-        <div class="balance" id="tokenBalance">— tCO₂e</div>
-        <span class="muted">Créditos registrados na carteira</span>
-        <div class="meter"><div id="balanceMeter"></div></div>
-        <div class="rows">
-          <div class="row"><span>Saldo do token</span><strong id="availableCredits">—</strong></div>
-          <div class="row"><span>Créditos aposentados</span><strong id="retiredCredits">—</strong></div>
-          <div class="row"><span>Projetos vinculados</span><strong>18 · demo</strong></div>
-          <div class="row"><span>Status da rede</span><strong class="gold" id="networkStatus">Aguardando conexão</strong></div>
-        </div>
-        <div class="web3-panel" id="actionsPanel" style="display:none">
-          <h4>Ações de Crédito de Carbono</h4>
-          <div class="input-group">
-            <label for="retireAmount">Quantidade para aposentar (unidades inteiras)</label>
-            <input type="number" id="retireAmount" placeholder="Ex.: 10" min="1" step="1">
-          </div>
-          <button class="danger-btn" onclick="retireCredits()">🔥 Aposentar Créditos</button>
-          <div class="tx-status" id="txStatus" role="status" aria-live="polite"></div>
-        </div>
-      </div>
-      <aside class="wallet">
-        <div class="wallet-logo" aria-hidden="true"><img src="logo-carbon-nex.png" alt="Carbon Nex" class="wallet-logo-img"></div>
-        <h3>Minha Wallet</h3>
-        <p class="muted">Conecte sua carteira MetaMask (ou outra carteira Web3) para consultar os dados do contrato de token configurado.</p>
-        <button class="primary" id="walletConnectBtn" onclick="connectWallet()">🦊 Conectar MetaMask</button>
-        <p id="walletStatus" class="muted" style="margin-top:14px;font-size:12px">Carteira não conectada.</p>
-        <div class="network-badge" id="networkBadge" style="display:none">
-          <span>●</span><span id="networkName">—</span>
-        </div>
-        <div class="web3-panel" id="walletInfo" style="display:none;margin-top:18px">
-          <div class="row"><span>Endereço</span><strong id="walletAddressShort">—</strong></div>
-          <div class="row"><span>Saldo Token</span><strong id="walletTokenBalance">—</strong></div>
-          <div class="row"><span>Rede</span><strong id="walletNetwork">—</strong></div>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<section id="tecnologia">
-  <div class="container">
-    <div class="section-title">
-      <h2>Como funciona</h2>
-      <p>Fluxo visual preparado para integração com contratos inteligentes e provedores de dados.</p>
-    </div>
-    <div class="process" id="processo">
-      <div class="step"><h3>Projeto</h3><p>Cadastro do projeto ambiental e seus dados de referência.</p></div>
-      <div class="step"><h3>Verificação</h3><p>Dados e documentos passam pelo processo de validação definido pela operação.</p></div>
-      <div class="step"><h3>Tokenização</h3><p>O ativo é representado digitalmente conforme o modelo jurídico e técnico adotado.</p></div>
-      <div class="step"><h3>Rastreio</h3><p>O registro pode ser consultado por identificador, carteira ou transação.</p></div>
-    </div>
-  </div>
-</section>
-
-
-<section id="ceo" class="ceo-section">
-  <div class="container">
-    <div class="ceo-grid">
-      <div class="ceo-photo-wrap">
-        <img src="ceo-floyd-menezes.jpg?v=3" alt="Floyd Menezes — CEO &amp; Founder Carbon Credit Nex">
-        <div class="ceo-photo-badge">● CEO · FOUNDER</div>
-      </div>
-      <div class="ceo-content">
-        <div class="eyebrow"><i class="dot"></i> Liderança · Visão · Blockchain</div>
-        <h2>Floyd Menezes</h2>
-        <div class="ceo-role">CEO &amp; Criador · Carbon Credito Coin (CCC)</div>
-        <p>
-          Visionário por trás do <strong style="color:#ffd54a">Carbon Credit Nex</strong> e da moeda
-          <strong style="color:#ffd54a">Carbon Credito Coin (CCC)</strong>, Floyd Menezes une estratégia de investimentos,
-          tecnologia blockchain e segurança cibernética para construir a próxima geração de ativos ambientais digitais.
-        </p>
-        <p>
-          Desenvolvedor de projetos e plataformas de investimento, lidera equipes especializadas em
-          <strong style="color:#fff">blindagem de segurança cibernética na Ethereum</strong>, protegendo infraestrutura,
-          contratos inteligentes e operações on-chain com rigor de nível institucional.
-        </p>
-        <div class="ceo-highlights">
-          <div class="ceo-item">
-            <div class="ceo-ico">◈</div>
-            <div>
-              <strong>Arquiteto de Plataformas</strong>
-              <span>Concepção e desenvolvimento de sistemas de investimento e tokenização de créditos de carbono.</span>
-            </div>
-          </div>
-          <div class="ceo-item">
-            <div class="ceo-ico">⬡</div>
-            <div>
-              <strong>Segurança Cibernética · Ethereum</strong>
-              <span>Liderança em blindagem de redes, auditoria de contratos e proteção de ativos digitais.</span>
-            </div>
-          </div>
-          <div class="ceo-item">
-            <div class="ceo-ico">◆</div>
-            <div>
-              <strong>Carbon Credito Coin (CCC)</strong>
-              <span>Diretor e criador do ecossistema que conecta impacto ambiental real à economia Web3.</span>
-            </div>
-          </div>
-        </div>
-        <div class="ceo-quote">
-          “O crédito de carbono só cumpre seu papel quando é rastreável, seguro e acessível.
-          A CCC nasce para transformar impacto ambiental em valor digital com transparência total.”
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contato">
-  <div class="container">
-    <div class="cta">
-      <h2>Construa a próxima geração de ativos verdes.</h2>
-      <p>Escolha uma das 3 opções para começar:</p>
-      <div class="contact-options">
-        <!-- Opção 1: WhatsApp -->
-        <a href="https://wa.me/5511916534508?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Carbon%20Credit%20Nex." target="_blank" rel="noopener" class="contact-card wa-card">
-          <div class="contact-icon wa-icon-bg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#ffffff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
-          <strong>1 · WhatsApp</strong>
-          <span>+55 11 91653-4508</span>
-          <em>Fale agora com a equipe</em>
-        </a>
-        <!-- Opção 2: E-mail -->
-        <a href="mailto:contato@carboncreditnex.com" class="contact-card email-card">
-          <div class="contact-icon email-icon-bg">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#ffd54a" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </div>
-          <strong>2 · E-mail</strong>
-          <span>contato@carboncreditnex.com</span>
-          <em>Envie sua proposta</em>
-        </a>
-        <!-- Opção 3: MetaMask / Web3 -->
-        <button type="button" class="contact-card web3-card" onclick="connectWallet(); document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">
-          <div class="contact-icon web3-icon-bg">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#ffd54a" aria-hidden="true"><path d="M21.49 6.11l-1.2-2.1a1 1 0 00-1.37-.37L12 7.5 5.08 3.64a1 1 0 00-1.37.37l-1.2 2.1A1 1 0 002.7 7.5L12 13l9.3-5.5a1 1 0 00.19-1.39zM3 9.5V18a2 2 0 002 2h14a2 2 0 002-2V9.5l-8.3 4.9a1 1 0 01-1 0L3 9.5z"/></svg>
-          </div>
-          <strong>3 · Wallet</strong>
-          <span>MetaMask / Web3</span>
-          <em>Conecte e veja seus créditos</em>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer style="position:relative;z-index:1">
-  <div class="container footer-flex">
-    <span>© 2026 Carbon Credit Nex</span>
-    <span>Crédito de Carbono <span class="gold">•</span> Blockchain <span class="gold">•</span> Green Assets</span>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-<script>
-/* CONFIGURE o endereço do contrato real antes de usar ações on-chain.
-   Endereço zero mantém o site em modo demonstrativo e bloqueia transações. */
-const CONTRACTS = { carbonToken: "0x0000000000000000000000000000000000000000" };
-const NETWORK = {
-  chainId: "0xaa36a7",
-  chainName: "Sepolia Testnet",
-  rpcUrls: ["https://rpc.sepolia.org"],
-  nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
-  blockExplorerUrls: ["https://sepolia.etherscan.io"]
-};
-const ABI = [
-  "function balanceOf(address owner) view returns (uint256)",
-  "function decimals() view returns (uint8)",
-  "function symbol() view returns (string)",
-  "function totalRetired() view returns (uint256)",
-  "function retire(uint256 amount)"
-];
-
-let currentAccount = null, provider = null, signer = null, tokenContract = null;
-const $ = id => document.getElementById(id);
-function shortAddress(a){ return a.slice(0,6)+"..."+a.slice(-4); }
-
-async function connectWallet(){
-  const status = $("walletStatus");
-  const eth = window.ethereum;
-  if(!eth){
-    status.innerHTML = 'MetaMask não detectada.<br><a href="https://metamask.io/download/" target="_blank" rel="noopener" style="color:#ffd54a;text-decoration:underline">Baixar MetaMask</a>';
-    status.style.color = "#ff8a8a";
-    return;
-  }
-  // Prefer MetaMask provider when multiple wallets are installed
-  const providerSource = eth.providers
-    ? (eth.providers.find(p => p.isMetaMask) || eth.providers[0])
-    : eth;
-  try{
-    status.textContent = "Solicitando conexão…";
-    status.style.color = "#c6d5cc";
-    const accounts = await providerSource.request({ method: "eth_requestAccounts" });
-    if(!accounts || !accounts.length){
-      status.textContent = "Nenhuma conta autorizada.";
-      status.style.color = "#ff8a8a";
-      return;
-    }
-    currentAccount = accounts[0];
-    let chain = await providerSource.request({ method: "eth_chainId" });
-    if(String(chain).toLowerCase() !== NETWORK.chainId){
-      try{
-        await providerSource.request({ method: "wallet_switchEthereumChain", params: [{ chainId: NETWORK.chainId }] });
-      }catch(switchErr){
-        if(switchErr.code === 4902 || (switchErr.data && switchErr.data.originalError && switchErr.data.originalError.code === 4902)){
-          await providerSource.request({ method: "wallet_addEthereumChain", params: [NETWORK] });
-        } else if(switchErr.code === 4001){
-          status.textContent = "Troca de rede rejeitada. Selecione Sepolia na MetaMask.";
-          status.style.color = "#ff8a8a";
-          return;
-        } else {
-          throw switchErr;
-        }
-      }
-    }
-    provider = new ethers.providers.Web3Provider(providerSource);
-    signer = provider.getSigner();
-    $("navConnectBtn").textContent = "🦊 " + shortAddress(currentAccount);
-    $("walletConnectBtn").textContent = "✓ MetaMask conectada";
-    status.textContent = "Conectada: " + shortAddress(currentAccount);
-    status.style.color = "#ffd54a";
-    $("walletAddressShort").textContent = shortAddress(currentAccount);
-    $("networkName").textContent = NETWORK.chainName;
-    $("walletNetwork").textContent = NETWORK.chainName;
-    $("networkStatus").textContent = "Conectada · Sepolia";
-    $("walletInfo").style.display = "block";
-    $("networkBadge").style.display = "inline-flex";
-    $("actionsPanel").style.display = "block";
-    await loadTokenBalance();
-  }catch(e){
-    console.error(e);
-    let msg = "Não foi possível conectar.";
-    if(e.code === 4001) msg = "Conexão rejeitada pelo usuário.";
-    else if(e.code === -32002) msg = "Já existe uma solicitação pendente na MetaMask. Abra a extensão e confirme.";
-    else if(e.message) msg = e.message;
-    status.textContent = msg;
-    status.style.color = "#ff8a8a";
-  }
-}
-
-async function loadTokenBalance(){
-  if(!currentAccount) return;
-  if(CONTRACTS.carbonToken === "0x0000000000000000000000000000000000000000"){
-    $("tokenBalance").textContent = "Não configurado";
-    $("availableCredits").textContent = "—";
-    $("retiredCredits").textContent = "—";
-    $("walletTokenBalance").textContent = "—";
-    $("balanceMeter").style.width = "0%";
-    $("networkStatus").textContent = "Modo demonstrativo";
-    return;
-  }
-  try{
-    tokenContract = new ethers.Contract(CONTRACTS.carbonToken, ABI, signer);
-    const [raw, dec] = await Promise.all([
-      tokenContract.balanceOf(currentAccount),
-      tokenContract.decimals()
-    ]);
-    const balance = Number(ethers.utils.formatUnits(raw, dec));
-    $("tokenBalance").textContent = balance.toLocaleString("pt-BR") + " tokens";
-    $("availableCredits").textContent = balance.toLocaleString("pt-BR");
-    $("walletTokenBalance").textContent = balance.toLocaleString("pt-BR");
-    $("balanceMeter").style.width = Math.min(100, balance / 200).toFixed(1) + "%";
-    try{
-      const retired = await tokenContract.totalRetired();
-      $("retiredCredits").textContent = Number(ethers.utils.formatUnits(retired, dec)).toLocaleString("pt-BR");
-    }catch(e){
-      $("retiredCredits").textContent = "Função indisponível";
-    }
-  }catch(e){
-    console.error(e);
-    $("tokenBalance").textContent = "Erro na consulta";
-    $("networkStatus").textContent = "Verifique contrato/rede";
-  }
-}
-
-async function retireCredits(){
-  const amount = Number($("retireAmount").value);
-  const status = $("txStatus");
-  status.className = "tx-status show";
-  if(!currentAccount){
-    status.classList.add("error");
-    status.textContent = "Conecte sua carteira primeiro.";
-    return;
-  }
-  if(!Number.isInteger(amount) || amount <= 0){
-    status.classList.add("error");
-    status.textContent = "Digite uma quantidade inteira maior que zero.";
-    return;
-  }
-  if(CONTRACTS.carbonToken === "0x0000000000000000000000000000000000000000" || !tokenContract){
-    status.classList.add("error");
-    status.textContent = "Modo demonstrativo: configure e valide o endereço e a ABI de um contrato real antes de enviar transações.";
-    return;
-  }
-  try{
-    status.textContent = "Confirme a transação no MetaMask…";
-    const decimals = await tokenContract.decimals();
-    const tx = await tokenContract.retire(ethers.utils.parseUnits(String(amount), decimals));
-    status.textContent = "Transação enviada. Aguardando confirmação…";
-    await tx.wait();
-    status.className = "tx-status show";
-    status.textContent = "Transação confirmada: " + tx.hash;
-    $("retireAmount").value = "";
-    await loadTokenBalance();
-  }catch(e){
-    console.error(e);
-    status.className = "tx-status show error";
-    status.textContent = "Transação não concluída: " + (e.reason || e.message || "erro desconhecido");
-  }
-}
-
-/* ========== PARTÍCULAS DOURADAS — Orbit Card ========== */
-function initBlockchainParticles(){
-  const canvas = document.getElementById("blockchainCanvas");
-  if(!canvas) return;
-  const ctx = canvas.getContext("2d");
-  let w, h, particles = [];
-
-  function resize(){
-    const rect = canvas.parentElement.getBoundingClientRect();
-    w = canvas.width = rect.width * (window.devicePixelRatio || 1);
-    h = canvas.height = rect.height * (window.devicePixelRatio || 1);
-    canvas.style.width = rect.width + "px";
-    canvas.style.height = rect.height + "px";
-    ctx.setTransform(window.devicePixelRatio || 1, 0, 0, window.devicePixelRatio || 1, 0, 0);
-    w = rect.width; h = rect.height;
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  const COUNT = 12;
-  for(let i = 0; i < COUNT; i++){
-    const isBright = Math.random() > 0.55;
-    particles.push({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      r: Math.random() * 2.2 + 0.7,
-      baseAlpha: isBright ? 0.85 : 0.4,
-      pulse: Math.random() * Math.PI * 2,
-      pulseSpeed: 0.015 + Math.random() * 0.02,
-      color: isBright ? [255, 213, 74] : [232, 176, 32]
-    });
-  }
-
-  let frame = 0;
-  function draw(){
-    frame++;
-    if(document.hidden){ requestAnimationFrame(draw); return; }
-    // atualiza a cada 2 frames em mobile
-    const skip = window.innerWidth < 700 && (frame % 2 === 0);
-    if(skip){ requestAnimationFrame(draw); return; }
-    ctx.clearRect(0, 0, w, h);
-    for(let i = 0; i < particles.length; i++){
-      for(let j = i + 1; j < particles.length; j++){
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < 70){
-          const alpha = 0.22 * (1 - dist/95);
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(255,200,50,${alpha})`;
-          ctx.lineWidth = 0.8;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-    // partículas com pulse
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.pulse += p.pulseSpeed;
-      if(p.x < -10) p.x = w + 10;
-      if(p.x > w + 10) p.x = -10;
-      if(p.y < -10) p.y = h + 10;
-      if(p.y > h + 10) p.y = -10;
-      const alpha = p.baseAlpha * (0.65 + 0.35 * Math.sin(p.pulse));
-      const r = p.r * (0.85 + 0.2 * Math.sin(p.pulse));
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${alpha})`;
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
-
-function initGlobalParticles(){ /* desativado para performance */ }
-
-/* ========== MERCADO LIVE DEMO ========== */
-function animateMarket(){
-  const bars = document.querySelectorAll("#liveChart i");
-  let price = 28.40;
-  setInterval(() => {
-    bars.forEach(bar => {
-      const h = 20 + Math.random() * 75;
-      bar.style.height = h + "%";
-    });
-    const delta = (Math.random() - 0.48) * 0.35;
-    price = Math.max(22, Math.min(36, price + delta));
-    const change = ((price - 28.40) / 28.40 * 100).toFixed(2);
-    $("indexPrice").innerHTML = `US$ ${price.toFixed(2)} <small>/ tCO₂e</small>`;
-    const el = $("indexChange");
-    if(change >= 0){
-      el.textContent = `▲ ${change}%`;
-      el.className = "up";
-    }else{
-      el.textContent = `▼ ${Math.abs(change)}%`;
-      el.style.color = "#ff8a8a";
-    }
-    $("volumeValue").textContent = (180000 + Math.floor(Math.random()*12000)).toLocaleString("pt-BR") + " tCO₂e";
-  }, 8000);
-}
-
-window.addEventListener("DOMContentLoaded", async () => {
-  initBlockchainParticles();
-  animateMarket();
-
-  if(window.ethereum){
-    const eth = window.ethereum;
-    const src = eth.providers ? (eth.providers.find(p => p.isMetaMask) || eth.providers[0]) : eth;
-    if(src && src.on){
-      src.on("accountsChanged", accounts => {
-        if(!accounts || !accounts.length){ currentAccount = null; location.reload(); }
-        else { currentAccount = accounts[0]; location.reload(); }
-      });
-      src.on("chainChanged", () => location.reload());
-    }
-  }
-
-  const items = document.querySelectorAll(".section-title,.stat,.card,.market-card,.step,.dashboard-main,.wallet,.cta");
-  if("IntersectionObserver" in window){
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    items.forEach(el => { el.classList.add("reveal"); observer.observe(el); });
-  }else{
-    items.forEach(el => el.classList.add("visible"));
-  }
-
-  if(window.ethereum){
-    try{
-      const eth = window.ethereum;
-      const src = eth.providers ? (eth.providers.find(p => p.isMetaMask) || eth.providers[0]) : eth;
-      const accounts = await src.request({ method: "eth_accounts" });
-      if(accounts && accounts.length){ currentAccount = accounts[0]; await connectWallet(); }
-    }catch(e){ console.warn("Auto-connect:", e); }
-  }
-});
-</script>
-</body>
-</html>
+        <div class="chart" id="
